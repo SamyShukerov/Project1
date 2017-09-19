@@ -18,13 +18,14 @@
         crossorigin="anonymous">
     <!-- // -->
     <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
 </head>
 
 <body>
     <div class="container">
         <div id="head">
             <div class="row header">
-                <div class="col-sm-7">
+                <div class="col-sm-9">
                     <img id="logo" width='100px' src="images/logo.png " alt=" ">
                 </div>
 
@@ -33,18 +34,6 @@
                         <input id="search" type="text" name="search" placeholder="Търсене..">
                     </form>
                 </div>
-
-                <div class="col-sm-2">
-                    <div class="dropdown">
-                        <button class="btn  btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Моят профил
-                            <span class="caret"></span></button>
-                        <ul class="dropdown-menu">
-                            <li><a id="enter" class="pointer">Вход</a></li>
-                            <li><a id="register" class="pointer">Регистрация</a></li>
-                        </ul>
-                    </div>
-                </div>
-
             </div>
             <div class="nav">
                 <nav class="navbar navbar-default">
@@ -58,10 +47,18 @@
                     </div>
                     <div class="collapse navbar-collapse" id="myNavbar">
                         <ul class="nav navbar-nav">
-                            <li class="active"><a href="#">Home</a></li>
-                            <li><a href="#">Page 1</a></li>
-                            <li><a href="#">Page 2</a></li>
-                            <li><a href="#">Page 3</a></li>
+                            <li class="active"><a href="#">Начало</a></li>
+                            <li class="dropdown">
+                                <a id="staj" class="dropdown-toggle" data-toggle="dropdown" href="#">Стажове
+                                <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Submenu 1-1</a></li>
+                                    <li><a href="#">Submenu 1-2</a></li>
+                                    <li><a href="#">Submenu 1-3</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Фирми</a></li>
+                            <li><a href="#">Новини</a></li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                             <li><a href="#"><span class="glyphicon glyphicon-user"></span> Регистрация</a></li>
@@ -73,6 +70,90 @@
         </div>
     </div>
 
+
+    <div id="home" class="container">
+        <form id="tursachka">
+            <div class="form-group row">
+                <div class="col-sm-3">
+                    <label for="place">Местоположение </label>
+                    <select class="form-control" id="place">
+                    <option>София</option>
+                    <option>Пловдив</option>
+                    <option>Бургас</option>
+                    <option>Варна</option>
+                  </select>
+                </div>
+            </div>
+            <div class=" row">
+                <div class="col-sm-3">
+                    <p id='placeP' style="font-weight: 700" data-toggle="collapse" data-target="#vid">Местоположение <span class="caret"></span></p>
+                    <div id="vid" class="collapse">
+                        <div class="radio">
+                            <label><input type="radio" name="place" value="София">София</label>
+                        </div>
+                        <div class="radio">
+                            <label><input type="radio" name="place" value="Пловдив">Пловдив</label>
+                        </div>
+                        <div class="radio">
+                            <label><input type="radio" name="place" value="Бургас">Бургас</label>
+                        </div>
+                        <div class="radio">
+                            <label><input type="radio" name="place" value="Варна">Варна</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class=" row">
+                <div class="col-sm-3">
+                    <p style="font-weight: 700" data-toggle="collapse" data-target="#category">Категории <span class="caret"></span></p>
+
+                    <div id="category" class="collapse">
+                        <div class="checkbox">
+                            <label><input type="checkbox" value="0">Банки и кредитиране</label>
+                        </div>
+                        <div class="checkbox">
+                            <label><input type="checkbox" value="1">Инженери</label>
+                        </div>
+                        <div class="checkbox">
+                            <label><input type="checkbox" value="2">ИТ</label>
+                        </div>
+                        <div class="checkbox">
+                            <label><input type="checkbox" value="3">Контакт центрове</label>
+                        </div>
+                        <div class="checkbox">
+                            <label><input type="checkbox" value="4">Сигурност и охрана</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class=" row">
+                <div class="col-sm-3">
+                    <p style="font-weight: 700" data-toggle="collapse" data-target="#vid">Вид <span class="caret"></span></p>
+                    <div id="vid" class="collapse">
+                        <div class="checkbox">
+                            <label><input type="checkbox" value="0">Пълно работно време</label>
+                        </div>
+                        <div class="checkbox">
+                            <label><input type="checkbox" value="1">Непълно работно време</label>
+                        </div>
+                        <div class="checkbox">
+                            <label><input type="checkbox" value="2">Стаж</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class=" row">
+                <div class="col-sm-3">
+                    <p style="font-weight: 700" data-toggle="collapse" data-target="#dumi">Ключови думи <span class="caret"></span></p>
+                    <div id="dumi" class="collapse">
+                        <input type="text" class="form-control" id="dumi">
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="btn btn-default">Търси </button>
+        </form>
+
+    </div>
 
 
 
