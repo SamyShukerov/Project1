@@ -101,5 +101,7 @@
     }
     
     .vsqkaFirma {
+        display: inline-block;
+        width: 100%;
         border: 1px solid black;
     }

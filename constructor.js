@@ -75,27 +75,38 @@ $(function() {
 
     // ______----------------------______________________-----------------------
 
+
+
+    // Login
+    $("#login").click(function() {
+        $("#signIn").modal();
+    });
+    // Register
+    $("#register").click(function() {
+        $("#signUp").modal();
+    });
+
     var main = Array.from(document.getElementsByClassName('main'));
     var firmi = document.getElementById('firmi');
-    var buttonFirmi = document.getElementById('buttonFirmi');
+    var buttonFirmi = Array.from(document.getElementsByClassName('buttonFirmi'));
     var home = document.getElementById('home');
     var buttonHome = document.getElementsByClassName('buttonHome');
 
-    buttonFirmi.addEventListener('click', function(event) {
-        main.forEach(div => div.style.display = 'none');
-        firmi.style.display = 'block';
-    }, false)
+    buttonFirmi.forEach(button => {
+        button.addEventListener('click', function(event) {
+            main.forEach(div => div.style.display = 'none');
+            firmi.style.display = 'block';
+        }, false)
+    });
 
     Array.from(buttonHome).forEach(button => {
         button.addEventListener('click', function(event) {
             main.forEach(div => div.style.display = 'none');
             home.style.display = 'block';
         })
-    })
-    console.log(arrayFirmi)
+    });
     arrayFirmi.forEach(firma => {
         var div = document.createElement('div');
-        div.classList.add('row');
         div.classList.add('vsqkaFirma');
         div.style.padding = '30px'
         var img = document.createElement('img');

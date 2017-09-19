@@ -65,15 +65,72 @@
                             <li><a href="#">Submenu 1-3</a></li>
                         </ul>
                     </li>
-                    <li><a id="buttonFirmi" href="#">Фирми</a></li>
+                    <li><a class="buttonFirmi" href="#">Фирми</a></li>
                     <li><a href="#">Новини</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> Регистрация</a></li>
-                    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Вход</a></li>
+                    <li><a id="register" href="#"><span class="glyphicon glyphicon-user"></span> Регистрация</a></li>
+                    <li><a id="login" href="#"><span class="glyphicon glyphicon-log-in"></span> Вход</a></li>
                 </ul>
             </div>
         </nav>
+
+
+        <!-- Login -->
+        <div class="modal fade" id="signIn" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="text-center">Влез в профила си</h1>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <input type="text" class="form-control " placeholder="Потребител" />
+                        </div>
+
+                        <div class="form-group">
+                            <input type="password" class="form-control " placeholder="Парола" />
+                        </div>
+
+                        <div class="form-group">
+                            <input type="button" class="btn btn-block btn-lg  btn-primary" value="Вход" />
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Registration -->
+        <div class="modal fade" id="signUp" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="text-center">Регистрация</h1>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <input type="text" class="form-control " placeholder="Потребител" />
+                        </div>
+
+                        <div class="form-group">
+                            <input type="password" class="form-control " placeholder="Парола" />
+                        </div>
+
+                        <div class="form-group">
+                            <input type="email" class="form-control " placeholder="E-mail" />
+                        </div>
+
+                        <div class="form-group">
+                            <input type="button" class="btn btn-block btn-lg  btn-primary" value="Регистрация" />
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
         <!-- Home page  -->
         <div id="home" class="container main">
             <form id="tursachka">
@@ -184,7 +241,7 @@
                     <p class="pointer footerP">Новини</p>
                 </div>
                 <div class="col-sm-2">
-                    <p class="pointer footerP">Фирми</p>
+                    <p class="pointer buttonFirmi footerP">Фирми</p>
                 </div>
                 <div class="col-sm-2">
 
