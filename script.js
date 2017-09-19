@@ -19,4 +19,43 @@ $(function() {
         }
     })
 
+    // Constructor Firma
+    function Firma(name, logo, grad, telefon, sait) {
+        this.name = name;
+        this.info = '';
+        this.logo = logo;
+        this.obqvi = [];
+        this.contacts = {
+            place: grad,
+            phone: telefon,
+            website: sait
+        }
+
+    }
+    Firma.prototype.addObqva = function(obqva) {
+        if (obqva instanceof Obqva) {
+            this.obqvi.push(obqva)
+            obqva.firma = this;
+        }
+    };
+    Firma.prototype.addInfo = function(text) {
+            this.info = text;
+        }
+        // Категории и видове обяви
+    var categories = ['Банки и кредитиране', 'Инженери', 'ИТ', 'Контакт центрове', 'Сигурност и охрана'];
+    var types = ['Пълно работно време', 'Непълно работно време', 'Стаж'];
+
+    // Constructor Obqva
+    function Obqva(name, grad, data, info) {
+        this.name = name;
+        this.info = info;
+        this.firma = null;
+        this.place = grad;
+        this.date = data;
+        this.category = categories[Math.floor(Math.random() * categories.length)];
+        this.type = types[Math.floor(Math.random() * types.length)];
+    }
 });
+
+
+var _FIRMI = [];

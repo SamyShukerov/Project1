@@ -43,6 +43,9 @@
         width: 80%;
         margin-left: 2em;
     }
+    .affix {
+        width: 90%;
+    }
 }
 
 footer {
@@ -87,4 +90,13 @@ footer {
 
 #last {
     margin: 10px 40%;
+}
+
+.affix {
+    top: 0;
+    margin-left: 6.7%;
+}
+
+.affix+.container {
+    padding-top: 70px;
 }

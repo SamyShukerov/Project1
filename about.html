@@ -19,9 +19,14 @@
     <!-- // -->
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
+
+    <style>
+
+    </style>
 </head>
 
 <body>
+    <!-- Header -->
     <div class="container">
         <div id="head">
             <div class="row header">
@@ -35,42 +40,39 @@
                     </form>
                 </div>
             </div>
-            <div class="nav">
-                <nav class="navbar navbar-default">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                              <span class="icon-bar"></span>
-                              <span class="icon-bar"></span>
-                              <span class="icon-bar"></span> 
-                            </button>
-                        <a class="navbar-brand" href="#">Jobs</a>
-                    </div>
-                    <div class="collapse navbar-collapse" id="myNavbar">
-                        <ul class="nav navbar-nav">
-                            <li class="active"><a href="#">Начало</a></li>
-                            <li class="dropdown">
-                                <a id="staj" class="dropdown-toggle" data-toggle="dropdown" href="#">Стажове
-                                <span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">Submenu 1-1</a></li>
-                                    <li><a href="#">Submenu 1-2</a></li>
-                                    <li><a href="#">Submenu 1-3</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">Фирми</a></li>
-                            <li><a href="#">Новини</a></li>
-                        </ul>
-                        <ul class="nav navbar-nav navbar-right">
-                            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Регистрация</a></li>
-                            <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Вход</a></li>
-                        </ul>
-                    </div>
-                </nav>
-            </div>
         </div>
     </div>
-
-
+    <nav class="navbar navbar-default container" data-spy="affix" data-offset-top="129">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span> 
+                    </button>
+            <a class="navbar-brand" href="#">Jobs</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Начало</a></li>
+                <li class="dropdown">
+                    <a id="staj" class="dropdown-toggle" data-toggle="dropdown" href="#">Стажове
+                        <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Submenu 1-1</a></li>
+                        <li><a href="#">Submenu 1-2</a></li>
+                        <li><a href="#">Submenu 1-3</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Фирми</a></li>
+                <li><a href="#">Новини</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#"><span class="glyphicon glyphicon-user"></span> Регистрация</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Вход</a></li>
+            </ul>
+        </div>
+    </nav>
+    <!-- Home page  -->
     <div id="home" class="container">
         <form id="tursachka">
             <div class="form-group row">
@@ -86,8 +88,8 @@
             </div>
             <div class=" row">
                 <div class="col-sm-3">
-                    <p id='placeP' style="font-weight: 700" data-toggle="collapse" data-target="#vid">Местоположение <span class="caret"></span></p>
-                    <div id="vid" class="collapse">
+                    <p id='placeP' style="font-weight: 700" data-toggle="collapse" data-target="#place2">Местоположение <span class="caret"></span></p>
+                    <div id="place2" class="collapse">
                         <div class="radio">
                             <label><input type="radio" name="place" value="София">София</label>
                         </div>
@@ -109,19 +111,19 @@
 
                     <div id="category" class="collapse">
                         <div class="checkbox">
-                            <label><input type="checkbox" value="0">Банки и кредитиране</label>
+                            <label><input type="checkbox" name="kategoriq" value="0">Банки и кредитиране</label>
                         </div>
                         <div class="checkbox">
-                            <label><input type="checkbox" value="1">Инженери</label>
+                            <label><input type="checkbox" name="kategoriq" value="1">Инженери</label>
                         </div>
                         <div class="checkbox">
-                            <label><input type="checkbox" value="2">ИТ</label>
+                            <label><input type="checkbox" name="kategoriq" value="2">ИТ</label>
                         </div>
                         <div class="checkbox">
-                            <label><input type="checkbox" value="3">Контакт центрове</label>
+                            <label><input type="checkbox" name="kategoriq" value="3">Контакт центрове</label>
                         </div>
                         <div class="checkbox">
-                            <label><input type="checkbox" value="4">Сигурност и охрана</label>
+                            <label><input type="checkbox" name="kategoriq" value="4">Сигурност и охрана</label>
                         </div>
                     </div>
                 </div>
@@ -131,13 +133,13 @@
                     <p style="font-weight: 700" data-toggle="collapse" data-target="#vid">Вид <span class="caret"></span></p>
                     <div id="vid" class="collapse">
                         <div class="checkbox">
-                            <label><input type="checkbox" value="0">Пълно работно време</label>
+                            <label><input type="checkbox" name="type" value="0">Пълно работно време</label>
                         </div>
                         <div class="checkbox">
-                            <label><input type="checkbox" value="1">Непълно работно време</label>
+                            <label><input type="checkbox" name="type" value="1">Непълно работно време</label>
                         </div>
                         <div class="checkbox">
-                            <label><input type="checkbox" value="2">Стаж</label>
+                            <label><input type="checkbox" name="type" value="2">Стаж</label>
                         </div>
                     </div>
                 </div>
@@ -152,10 +154,13 @@
             </div>
             <button type="button" class="btn btn-default">Търси </button>
         </form>
-
     </div>
 
 
+    <div style="height:500px" class="row">
+
+
+    </div>
 
 
     <footer class="container">
