@@ -29,7 +29,7 @@
         cursor: pointer;
     }
     
-    @media screen and (max-width:768px) {
+    @media all and (max-width:768px) {
         #logo {
             display: block;
             margin: 5px auto;
@@ -109,4 +109,9 @@
     #faq>h2 {
         margin: 15px 35%;
         text-shadow: 1px 1px 3px black;
+    }
+    
+    .logP {
+        margin-top: 10px;
+        margin-left: 25%;
     }

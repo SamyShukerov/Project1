@@ -89,9 +89,14 @@ $(function() {
         console.log(user + '  ' + pass);
         if (user && pass && pass.length > 5) {
             new User(user, pass);
+            document.getElementById('regBtn').classList.remove('btn-primary');
+            document.getElementById('regBtn').classList.add('btn-success');
             document.getElementById('regP').textContent = 'Вие успешно се регистрирахте !';
+            document.getElementById('regP').classList.remove('text-danger')
+            document.getElementById('regP').classList.add('text-success')
         } else {
-            document.getElementById('regP').textContent = 'Невалиден потребител и/или парола'
+            document.getElementById('regP').textContent = 'Невалиден потребител и/или парола';
+            document.getElementById('regP').classList.add('text-danger')
         }
     })
 
@@ -103,7 +108,11 @@ $(function() {
                 return potrebitel.name == user && potrebitel.pass == pass;
             });
             if (vhod) {
+                document.getElementById('vhodBtn').classList.remove('btn-primary');
+                document.getElementById('vhodBtn').classList.add('btn-success');
                 document.getElementById('vhodP').textContent = 'Вие успешно влезнахте в своя профил !';
+                document.getElementById('vhodP').classList.remove('text-danger')
+                document.getElementById('vhodP').classList.add('text-success')
                 var login = document.getElementById('login').parentNode;
                 var rr = document.getElementById('register');
                 var name = document.createElement('a');
@@ -114,6 +123,7 @@ $(function() {
 
             } else {
                 document.getElementById('vhodP').textContent = 'Невалиден потребител и/или парола';
+                document.getElementById('vhodP').classList.add('text-danger')
             }
 
         })
