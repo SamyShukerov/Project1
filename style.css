@@ -105,3 +105,8 @@
         width: 100%;
         border: 1px solid black;
     }
+    
+    #faq>h2 {
+        margin: 15px 35%;
+        text-shadow: 1px 1px 3px black;
+    }

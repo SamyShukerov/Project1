@@ -24,7 +24,7 @@ $(function() {
             phone: telefon,
             website: sait
         }
-
+        arrayFirmi.push(this)
     }
     Firma.prototype.addObqva = function(obqva) {
         if (obqva instanceof Obqva) {
@@ -70,10 +70,54 @@ $(function() {
     We are those wizards who facilitate your life.
     Looking forward to meet other people with creative minds, enthusiasm and vision to join us in employing ingenuity to develop what’s new, what’s next and what best serves our customers’ needs.`);
 
-    arrayFirmi.push(imperia, upnetix, nemetschek);
 
 
-    // ______----------------------______________________-----------------------
+    // Constructor for User (Login)
+    var potrebiteli = [];
+
+    function User(name, password) {
+        this.name = name;
+        this.pass = password;
+        potrebiteli.push(this)
+    }
+    var sami = new User('samy_', 123456);
+    var rali = new User('rali', 123456);
+    // registraciq
+    $('#regBtn').click(function() {
+        var user = document.getElementById('regUser').value;
+        var pass = document.getElementById('regPass').value;
+        console.log(user + '  ' + pass);
+        if (user && pass && pass.length > 5) {
+            new User(user, pass);
+            document.getElementById('regP').textContent = 'Вие успешно се регистрирахте !';
+        } else {
+            document.getElementById('regP').textContent = 'Невалиден потребител и/или парола'
+        }
+    })
+
+    // vhod
+    $('#vhodBtn').click(function() {
+            var user = document.getElementById('vhodUser').value;
+            var pass = document.getElementById('vhodPass').value;
+            var vhod = potrebiteli.find(potrebitel => {
+                return potrebitel.name == user && potrebitel.pass == pass;
+            });
+            if (vhod) {
+                document.getElementById('vhodP').textContent = 'Вие успешно влезнахте в своя профил !';
+                var login = document.getElementById('login').parentNode;
+                var rr = document.getElementById('register');
+                var name = document.createElement('a');
+                name.innerHTML = '<span class="glyphicon glyphicon-user"></span>  <span style="cursor:pointer">' + user + '</span>';
+                rr.parentNode.appendChild(name);
+                rr.parentNode.removeChild(rr)
+                login.parentNode.removeChild(login);
+
+            } else {
+                document.getElementById('vhodP').textContent = 'Невалиден потребител и/или парола';
+            }
+
+        })
+        // ______----------------------______________________-----------------------
 
 
 
@@ -91,6 +135,13 @@ $(function() {
     var buttonFirmi = Array.from(document.getElementsByClassName('buttonFirmi'));
     var home = document.getElementById('home');
     var buttonHome = document.getElementsByClassName('buttonHome');
+    var buttonFAQ = document.getElementById('vuprosi');
+    var faq = document.getElementById('faq');
+
+    buttonFAQ.addEventListener('click', function() {
+        main.forEach(div => div.style.display = 'none');
+        faq.style.display = 'block'
+    })
 
     buttonFirmi.forEach(button => {
         button.addEventListener('click', function(event) {

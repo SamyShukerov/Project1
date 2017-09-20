@@ -85,16 +85,16 @@
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                            <input type="text" class="form-control " placeholder="Потребител" />
+                            <input id="vhodUser" type="text" class="form-control " placeholder="Потребител" />
                         </div>
 
                         <div class="form-group">
-                            <input type="password" class="form-control " placeholder="Парола" />
+                            <input id="vhodPass" type="password" class="form-control " placeholder="Парола" />
                         </div>
 
                         <div class="form-group">
-                            <input type="button" class="btn btn-block btn-lg  btn-primary" value="Вход" />
-
+                            <input id="vhodBtn" type="button" class="btn btn-block btn-lg  btn-primary" value="Вход" />
+                            <p id="vhodP"></p>
                         </div>
                     </div>
                 </div>
@@ -110,11 +110,11 @@
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                            <input type="text" class="form-control " placeholder="Потребител" />
+                            <input id="regUser" type="text" class="form-control " placeholder="Потребител" />
                         </div>
 
                         <div class="form-group">
-                            <input type="password" class="form-control " placeholder="Парола" />
+                            <input id="regPass" type="password" class="form-control " placeholder="Парола" />
                         </div>
 
                         <div class="form-group">
@@ -122,8 +122,8 @@
                         </div>
 
                         <div class="form-group">
-                            <input type="button" class="btn btn-block btn-lg  btn-primary" value="Регистрация" />
-
+                            <input id="regBtn" type="button" class="btn btn-block btn-lg  btn-primary" value="Регистрация" />
+                            <p id="regP"></p>
                         </div>
                     </div>
                 </div>
@@ -215,15 +215,51 @@
             </form>
         </div>
 
-
-        <div style="height:500px" class="row main">
-
-
+        <!-- Въпроси и отговори -->
+        <div id='faq' class="container main">
+            <h2>Въпроси и отговори </h2>
+            <div class="panel panel-primary ">
+                <div class="panel-heading">
+                    <h4>Какво е Jobs.bg?</h4>
+                </div>
+                <div class="panel-body">Jobs.bg е кариерна медия. Jobs.bg се ползва от над 70 000 компании в България от всички сектори на икономиката. Публикуват се повече от 30 000 позиции месечно.</div>
+            </div>
+            <div class="panel panel-primary ">
+                <div class="panel-heading">
+                    <h4>Участва ли Jobs.bg в процеса на подбор на кандидати?</h4>
+                </div>
+                <div class="panel-body">Jobs.bg е медия. Jobs.bg не е агенция за подбор на персонал и не участва по никакъв начин в избора на кандидати или последващата комуникация и договарянето на условия.</div>
+            </div>
+            <div class="panel panel-primary ">
+                <div class="panel-heading">
+                    <h4>Какво представлява акаунтът в Jobs.bg?</h4>
+                </div>
+                <div class="panel-body">Създавайки акаунт в Jobs.bg, можете да: - съхраните и използвате при кандидатстване готово CV и други файлове; - да създадете стъпка по стъпка CV в европейски формат в сайта ; - да имате пълната история на датите, обявите и CV-тата, с
+                    които сте кандидатствали</div>
+            </div>
+            <div class="panel panel-primary ">
+                <div class="panel-heading">
+                    <h4>Имат ли други работодатели достъп до моето CV и контакти?</h4>
+                </div>
+                <div class="panel-body">Не. Работодателите имат достъп само до кандидатурите по своите обяви.</div>
+            </div>
+            <div class="panel panel-primary ">
+                <div class="panel-heading">
+                    <h4>Има ли значение кога ще кандидатствам и защо обявите нямат крайна дата?</h4>
+                </div>
+                <div class="panel-body">В обявите няма крайна дата, защото е възможно компанията да спре обявата предварително при достигане на желания брой кандидати. В случай че желае, компанията би могла да посочи крайна дата в текста на обявата.</div>
+            </div>
+            <div class="panel panel-primary ">
+                <div class="panel-heading">
+                    <h4>Защо компаниите публикуват поверителни обяви?</h4>
+                </div>
+                <div class="panel-body">Обикновено случаите, в които компании използват поверителни обяви, са: компанията не желае нейни конкуренти да научат за позицията; в момента има изпълняващ длъжността.</div>
+            </div>
         </div>
 
         <!-- Фирми -->
 
-        <div id="firmi" class="main">
+        <div id="firmi" class="main container">
 
         </div>
 
@@ -235,7 +271,7 @@
                     <p class="pointer footerP">Контакти</p>
                 </div>
                 <div class="col-sm-2">
-                    <p class="pointer footerP">FAQ</p>
+                    <p id="vuprosi" class="pointer footerP">FAQ</p>
                 </div>
                 <div class="col-sm-2">
                     <p class="pointer footerP">Новини</p>
