@@ -110,8 +110,60 @@
         margin: 15px 35%;
         text-shadow: 1px 1px 3px black;
     }
+<<<<<<< HEAD
     
     .logP {
         margin-top: 10px;
         margin-left: 25%;
     }
+=======
+
+    #buttonInfo {
+       position: relative;
+       display: inline-block;
+       width: 10em;
+       height: 2.5em;
+       line-height: 2.5em;
+       vertical-align: center;
+       text-decoration: none;
+       text-shadow: 0 -1px 1px #777;
+       color: #fff;
+       outline: none;
+       border: 2px solid #9A8F8F;
+       border-radius: 5px;
+       box-shadow: 0 0 0 60px rgba(0,0,0,0) inset, .1em .1em .2em #4F4D4D;
+       background: linear-gradient(#D7CECE, #A39494 48%, #8E8686 52%, #5B5858);
+    }
+
+    #buttonInfo:active {
+        top: .1em;
+        left: .1em;
+        box-shadow: 0 0 0 60px rgba(0,0,0,.05) inset;
+    }
+
+    #buttonObqvi {
+        position: relative;
+        display: inline-block;
+        width: 10em;
+        height: 2.5em;
+        line-height: 2.5em;
+        vertical-align: center;
+        text-decoration: none;
+        text-shadow: 0 -1px 1px #777;
+        color: #fff;
+        outline: none;
+        border: 2px solid #9A8F8F;
+        border-radius: 5px;
+        box-shadow: 0 0 0 60px rgba(0,0,0,0) inset, .1em .1em .2em #4F4D4D;
+        background: linear-gradient(#D7CECE, #A39494 48%, #8E8686 52%, #5B5858);
+     }
+ 
+     #buttonObqvi:active {
+         top: .1em;
+         left: .1em;
+         box-shadow: 0 0 0 60px rgba(0,0,0,.05) inset;
+     }
+
+
+   
+>>>>>>> 10bcc5f18e7b6455738d20f8ecb49bcee4b5da00
