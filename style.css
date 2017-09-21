@@ -158,4 +158,31 @@
      }
 
 
-   
+     #obyava-name {
+         display:block;
+         text-align: center;
+         font-size: 15px;
+         font-family: Verdana, Geneva, Tahoma, sans-serif;
+         color: red;
+     }
+
+     #table-obyavi {
+        border: 1px solid black;
+        margin:auto;
+     }
+
+    #logo-obyava {
+        display: block;
+        float: right;
+        padding-right: 25px;
+        padding-bottom: 5px;
+    }
+
+    #obyava-name {
+        margin:auto;
+        padding-top: 15px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bold;
+    }
+
+ 

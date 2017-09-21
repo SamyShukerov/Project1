@@ -1,14 +1,16 @@
+var vsichkiObqvi = [];
+
 $(function() {
     var form = document.getElementById('tursachka');
 
     form.addEventListener('click', function(e) {
-        if (e.target.type == 'radio') {
+        if (e.target.type === 'radio') {
             let place = document.getElementById('placeP');
             let span = document.createElement('span');
 
             span.textContent = '  (' + e.target.value + ')';
             console.log(place.children.length);
-            if (place.children.length == 1) {
+            if (place.children.length === 1) {
                 place.appendChild(span);
             } else { place.replaceChild(span, place.lastChild); }
         }
@@ -16,7 +18,7 @@ $(function() {
     var arrayFirmi = [];
     // Constructor Firma
 
-    function Firma(name, logo, adres, telefon, sait, id) {
+    function Firma(name, logo, adres, telefon, sait) {
         this.name = name;
         this.info = '';
         this.logo = logo;
@@ -42,12 +44,13 @@ $(function() {
     var types = ['Пълно работно време', 'Непълно работно време', 'Стаж'];
 
     // Constructor Obqva
-    function Obqva(name, grad, data, info) {
+    function Obqva(name, grad, data, info, stars) {
         this.name = name;
         this.info = info;
         this.firma = null;
         this.place = grad;
         this.date = data;
+        this.stars = stars;
         this.category = categories[Math.floor(Math.random() * categories.length)];
         this.type = types[Math.floor(Math.random() * types.length)];
     }
@@ -58,17 +61,19 @@ $(function() {
     На 23.08.2005 официално стартира Ера 1 на Свят 1. От тази паметна дата досега компанията продължава да расте с динамични темпове, създавайки все по-комплексни и иновативни версии на Империя Онлайн, както и други заглавия, разширявайки екипа си всеки месец, повишавайки броя на своите играчи всеки ден, налагайки своето място на картата на онлайн игрите.
     Империя Онлайн вече е преминала отвъд определението за независимо гейм студио и сега държи солидни позиции на глобалния гейм пазар, установявайки името си като запазена марка за качество на продукта.`);
 
-    var programist = new Obqva('Junior Developer', 'Sofia', new Date(), 'Търсим си junior, който да има високо IQ, желание за работа и развитие и да умее да прави вкусно и горещо кафе');
+    var programist = new Obqva('Junior Developer', 'Sofia', '18.09.2017', 'Търсим си junior, който да има високо IQ, желание за работа и развитие и да умее да прави вкусно и горещо кафе', 4);
 
     imperia.addObqva(programist);
+    vsichkiObqvi.push(programist);
 
     var upnetix = new Firma('UpnetiX', 'images/upnetix_logo.png', ' Бул. “България” 69, ет. 16, Infinity Tower, София, България', '+359 896 665 999', 'http://upnetix.com');
 
     upnetix.addInfo(`We are passionate app and web users, seeking perfection, surrounded by both startup & enterprise culture, constantly expanding our skill set and technology coverage. Our team includes seasoned developers, brilliant designers, high-demanding quality engineers as well as rising IT stars, working side by side with our accomplished project leaders. Together we create synergies of productivity and creativity which bring satisfaction to our clients and ourselves. We continually build upon this base of experience and technical expertise, so that we can transform complex business problems into elegant solutions`);
 
-    var sekretarka = new Obqva('Oficce manager', 'Varna', new Date(), 'Tursim si opitna sekretarka, koqto da poddurja reda i disciplinata v ofisa');
+    var sekretarka = new Obqva('Oficce manager', 'Varna', '20.09.2017', 'Tursim si opitna sekretarka, koqto da poddurja reda i disciplinata v ofisa', 3);
 
     upnetix.addObqva(sekretarka);
+    vsichkiObqvi.push(sekretarka);
 
     var nemetschek = new Firma('Nemetschek', 'images/nemetschek_logo.png', ' Ул. "Индустриална" 11, Василев бизнес център, София, България', '+359 2 4210900', 'https://www.nemetschek.bg');
 
@@ -82,10 +87,37 @@ $(function() {
     We are those wizards who facilitate your life.
     Looking forward to meet other people with creative minds, enthusiasm and vision to join us in employing ingenuity to develop what’s new, what’s next and what best serves our customers’ needs.`);
 
-    var programenDirektor = new Obqva('Programen direktor', 'Sofia', new Date(), 'Tursim losh direktor, koito shte vuzlaga na podchinenite si mnogo zadachi');
+    var programenDirektor = new Obqva('Programen direktor', 'Sofia', '21.09.2017', 'Tursim losh direktor, koito shte vuzlaga na podchinenite si mnogo zadachi', 5);
 
     nemetschek.addObqva(programenDirektor);
+    vsichkiObqvi.push(programenDirektor);
 
+    var trader = new Firma('Trader.bg', 'images/Traderbg.png', 'София 1756, ул. „Лъчезар Станчев” № 3 Litex Tower, ет. 10', '(+359) 2 448 48 50', 'https://www.trader.bg/bg');
+
+    trader.addInfo(`Trader.bg е иновативна уеб платформа за търговия, която осигурява бърз и лесен достъп до световните финансови пазари на начинаещи и професионални трейдъри. Услугите ни се предоставят от регулирания в Европейския съюз брокер „Авус Капитал“. Нашата платформа се ползва от над 200 000 активни трейдъри в над 65 държави, които инвестират в 750 различни финансови инструмента: валути, стоки, акции и индекси.`);
+
+    var turgovec = new Obqva('Търговец', 'Пловдив', '15.09.2017', 'Търсим си търговец, който ще извършва сделки на територията на цялата страна', 5);
+
+    trader.addObqva(turgovec);
+    vsichkiObqvi.push(turgovec);
+
+    var softwareGroup = new Firma('Software Group', 'images/softwareGroup.png', 'гр. София, бул. „Цариградско шосе“ 115', '02 923 1783', 'http://www.softwaregroup-bg.com/');
+
+    softwareGroup.addInfo(`Software Group is a global technology company that is specialized in delivery channel and integration solutions for institutions that provide financial services. We help financial service providers digitize their business and successfully go through the process of digital transformation, extend their outreach and improve operational efficiency. We take financial inclusion at heart and we have a social mission hardcoded in our DNA - we innovate for a global economy that includes everyone.`);
+
+    var hr = new Obqva('HR', 'Бургас', '16.09.2017', 'Търсим човек, който умее да прави добри психологически профили на кандидатите за работа', 3);
+
+    softwareGroup.addObqva(hr);
+    vsichkiObqvi.push(hr);
+
+    var hedgeHog = new Firma('Hedgehog', 'images/hedgehog_ready.png', 'София, пл. "Папа Йоан Павел II", Бизнес център България 2000, ет.5', '087 8547269', 'https://www.hhog.com/');
+
+    hedgeHog.addInfo(`Since launching in 2007, Hedgehog has grown to 4 offices in North America and Europe and twice been named to the Inc. 5000 list of fastest-growing companies in America.  We design and engineer high performance, multi-channel digital marketing platforms that position clients for growth and success.`);
+
+    var projectManager = new Obqva('Project Manager', 'София', '22.09.2017', 'Търсим специалст в областта, който има много опит и е практикувал поне 2 години в чужбина', 5);
+
+    hedgeHog.addObqva(projectManager);
+    vsichkiObqvi.push(projectManager);
     // Constructor for User (Login)
     var potrebiteli = [];
 
@@ -116,7 +148,7 @@ $(function() {
         var user = document.getElementById('vhodUser').value;
         var pass = document.getElementById('vhodPass').value;
         var vhod = potrebiteli.find(potrebitel => {
-            return potrebitel.name == user && potrebitel.pass == pass;
+            return potrebitel.name === user && potrebitel.pass === pass;
         });
 
         if (vhod) {
@@ -225,19 +257,20 @@ $(function() {
     arrayFirmi.forEach(firma => {
         firma.obqvi.forEach(obyava => {
             var div = document.createElement('div');
-            // var p = document.createElement('p');
 
-            var html = `<table border='5'>
-                <tr>
-                    <td width='550px'>${obyava.date}</td>
-                        <td width='550px'>${obyava.name}</td>
-                        <td width='550px'><img src='${firma.logo}' alt='logo na Imperia' width='60px' height="auto" /></td>
-                </tr>
-                <tr>
-                    <td colspan='3'>
-                        <p>${obyava.info}</p>
+            div.style.padding = '5px';
+
+            var html = `<table id='table-obyavi'>
+               
+                    <td width='80px'>${obyava.date}<br>
+                    <p><img src='images/stars-${Math.round(obyava.stars)}.jpg' alt='golden stars' width='auto' height='15px' /></p>
                     </td>
-                </tr>
+                    
+                        <td width='850px'><h3 id='obyava-name'>${obyava.name}</h3>
+                        <img src='${firma.logo}' id='logo-obyava' alt='logo na Imperia' width='150px' height="auto" />
+                        </td>
+           
+              
             </table>`;
 
             div.innerHTML = html;
@@ -247,3 +280,9 @@ $(function() {
         });
     });
 });
+
+// <tr>
+//     <td colspan='3'>
+//         <p><img src='images/stars-${Math.round(obyava.stars)}.jpg' alt='golden stars' width='auto' height='15px' /></p>
+//     </td>
+// </tr>
