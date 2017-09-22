@@ -112,16 +112,11 @@ $(function() {
             document.getElementById('regP').classList.add('text-success')
         } else {
             document.getElementById('regP').textContent = 'Невалиден потребител и/или парола';
-<<<<<<< HEAD
-            document.getElementById('regP').classList.add('text-danger')
-=======
->>>>>>> 10bcc5f18e7b6455738d20f8ecb49bcee4b5da00
         }
     });
 
     // vhod
     $('#vhodBtn').click(function() {
-<<<<<<< HEAD
             var user = document.getElementById('vhodUser').value;
             var pass = document.getElementById('vhodPass').value;
             var vhod = potrebiteli.find(potrebitel => {
@@ -150,29 +145,6 @@ $(function() {
         // ______----------------------______________________-----------------------
 
 
-=======
-        var user = document.getElementById('vhodUser').value;
-        var pass = document.getElementById('vhodPass').value;
-        var vhod = potrebiteli.find(potrebitel => {
-            return potrebitel.name == user && potrebitel.pass == pass;
-        });
-
-        if (vhod) {
-            document.getElementById('vhodP').textContent = 'Вие успешно влезнахте в своя профил !';
-            var login = document.getElementById('login').parentNode;
-            var rr = document.getElementById('register');
-            var name = document.createElement('a');
-
-            name.innerHTML = '<span class="glyphicon glyphicon-user"></span>  <span style="cursor:pointer">' + user + '</span>';
-            rr.parentNode.appendChild(name);
-            rr.parentNode.removeChild(rr);
-            login.parentNode.removeChild(login);
-        } else {
-            document.getElementById('vhodP').textContent = 'Невалиден потребител и/или парола';
-        }
-    });
-    // ______----------------------______________________-----------------------
->>>>>>> 10bcc5f18e7b6455738d20f8ecb49bcee4b5da00
 
     // Login
     $('#login').click(function() {
