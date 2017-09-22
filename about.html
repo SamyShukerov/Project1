@@ -67,7 +67,7 @@
                     </li>
                     <li><a class="buttonFirmi" href="#">Фирми</a></li>
                     <li><a href="#">Новини</a></li>
-                    <li><a class="buttonObyavi" href='#'>Всички обяви</a></li>
+                    <li><a class="buttonObyavi" id='buttonObqvi' href='#'>Всички обяви</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a id="register" href="#"><span class="glyphicon glyphicon-user"></span> Регистрация</a></li>
@@ -133,10 +133,10 @@
 
 
         <!-- Home page  -->
-        <div id="home" class="container main">
-            <form id="tursachka">
+        <div id="home" class="container main row">
+            <form id="tursachka" class="col-md-4">
                 <div class="form-group row">
-                    <div class="col-sm-3">
+                    <div class="col-sm-5">
                         <label for="place">Местоположение </label>
                         <select class="form-control" id="place">
                     <option>София</option>
@@ -147,7 +147,7 @@
                     </div>
                 </div>
                 <div class=" row">
-                    <div class="col-sm-3">
+                    <div class="col-sm-6">
                         <p id='placeP' style="font-weight: 700" data-toggle="collapse" data-target="#place2">Местоположение <span class="caret"></span></p>
                         <div id="place2" class="collapse">
                             <div class="radio">
@@ -166,7 +166,7 @@
                     </div>
                 </div>
                 <div class=" row">
-                    <div class="col-sm-3">
+                    <div class="col-sm-5">
                         <p style="font-weight: 700" data-toggle="collapse" data-target="#category">Категории <span class="caret"></span></p>
 
                         <div id="category" class="collapse">
@@ -189,7 +189,7 @@
                     </div>
                 </div>
                 <div class=" row">
-                    <div class="col-sm-3">
+                    <div class="col-sm-5">
                         <p style="font-weight: 700" data-toggle="collapse" data-target="#vid">Вид <span class="caret"></span></p>
                         <div id="vid" class="collapse">
                             <div class="checkbox">
@@ -205,7 +205,7 @@
                     </div>
                 </div>
                 <div class=" row">
-                    <div class="col-sm-3">
+                    <div class="col-sm-5">
                         <p style="font-weight: 700" data-toggle="collapse" data-target="#dumi">Ключови думи <span class="caret"></span></p>
                         <div id="dumi" class="collapse">
                             <input type="text" class="form-control" id="dumi">
@@ -214,6 +214,21 @@
                 </div>
                 <button type="button" class="btn btn-default">Търси </button>
             </form>
+            <div class="col-md-8">
+                <div>
+                    div1
+
+                </div>
+                <div>
+                    div2
+
+                </div>
+                <div>
+                    di3
+                </div>
+
+
+            </div>
         </div>
 
         <!-- Въпроси и отговори -->
@@ -267,7 +282,7 @@
         <!-- Vsichki obyavi -->
 
         <div id="obyavi" class="main container">
-            
+
         </div>
 
         <footer class="container">
