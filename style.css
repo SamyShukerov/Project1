@@ -185,4 +185,7 @@
         font-weight: bold;
     }
 
- 
+    #osnovno {
+        color:red;
+        background-color: blue;
+    }
