@@ -46,7 +46,7 @@ imperia.addInfo(`Идеята за Империя Онлайн се ражда �
 На 23.08.2005 официално стартира Ера 1 на Свят 1. От тази паметна дата досега компанията продължава да расте с динамични темпове, създавайки все по-комплексни и иновативни версии на Империя Онлайн, както и други заглавия, разширявайки екипа си всеки месец, повишавайки броя на своите играчи всеки ден, налагайки своето място на картата на онлайн игрите.
 Империя Онлайн вече е преминала отвъд определението за независимо гейм студио и сега държи солидни позиции на глобалния гейм пазар, установявайки името си като запазена марка за качество на продукта.`);
 
-var programist = new Obqva('Junior Developer', 'Sofia', '18.09.2017', 'Търсим си junior, който да има високо IQ, желание за работа и развитие и да умее да прави вкусно и горещо кафе', 4);
+var programist = new Obqva('Junior Developer', 'София', '18.09.2017', 'Търсим си junior, който да има високо IQ, желание за работа и развитие и да умее да прави вкусно и горещо кафе', 4);
 
 imperia.addObqva(programist);
 
@@ -55,7 +55,7 @@ var upnetix = new Firma('UpnetiX', 'assets/images/upnetix_logo.png', ' Бул. �
 
 upnetix.addInfo(`We are passionate app and web users, seeking perfection, surrounded by both startup & enterprise culture, constantly expanding our skill set and technology coverage. Our team includes seasoned developers, brilliant designers, high-demanding quality engineers as well as rising IT stars, working side by side with our accomplished project leaders. Together we create synergies of productivity and creativity which bring satisfaction to our clients and ourselves. We continually build upon this base of experience and technical expertise, so that we can transform complex business problems into elegant solutions`);
 
-var sekretarka = new Obqva('Oficce manager', 'Varna', '20.09.2017', 'Tursim si opitna sekretarka, koqto da poddurja reda i disciplinata v ofisa', 3);
+var sekretarka = new Obqva('Oficce manager', 'Варна', '20.09.2017', 'Tursim si opitna sekretarka, koqto da poddurja reda i disciplinata v ofisa', 3);
 
 upnetix.addObqva(sekretarka);
 
@@ -72,7 +72,7 @@ We are team.
 We are those wizards who facilitate your life.
 Looking forward to meet other people with creative minds, enthusiasm and vision to join us in employing ingenuity to develop what’s new, what’s next and what best serves our customers’ needs.`);
 
-var programenDirektor = new Obqva('Programen direktor', 'Sofia', '21.09.2017', 'Tursim losh direktor, koito shte vuzlaga na podchinenite si mnogo zadachi', 5);
+var programenDirektor = new Obqva('Programen direktor', 'София', '21.09.2017', 'Tursim losh direktor, koito shte vuzlaga na podchinenite si mnogo zadachi', 5);
 
 nemetschek.addObqva(programenDirektor);
 

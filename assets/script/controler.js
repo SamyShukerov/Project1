@@ -70,7 +70,7 @@ $(function() {
     $('#register').click(function() {
         $('#signUp').modal();
     });
-
+    var tursachka = document.getElementById('tursachka');
     var main = Array.from(document.getElementsByClassName('main'));
     var firmi = document.getElementById('firmi');
     var buttonFirmi = Array.from(document.getElementsByClassName('buttonFirmi'));
@@ -80,6 +80,10 @@ $(function() {
     var buttonHome = document.getElementsByClassName('buttonHome');
     var buttonFAQ = document.getElementById('vuprosi');
     var faq = document.getElementById('faq');
+    var a = document.createElement('a');
+    a.id = 'buttonForSearch';
+    a.textContent = 'Промени търсенето';
+
 
     buttonFAQ.addEventListener('click', function() {
         main.forEach(div => div.style.display = 'none');
@@ -104,6 +108,7 @@ $(function() {
         button.addEventListener('click', function(event) {
             main.forEach(div => div.style.display = 'none');
             home.style.display = 'block';
+            home.insertBefore(tursachka, home.firstChild)
         });
     });
     arrayFirmi.forEach(firma => {
@@ -152,13 +157,13 @@ $(function() {
 
     // function za pokazvane na obqvi
     function pokajiObqvi(arrObqvi, container) {
-        obyavi.innerHTML = '';
+        container.innerHTML = '';
         arrObqvi.forEach(obyava => {
             var div = document.createElement('div');
 
             div.style.padding = '5px';
 
-            var html = `<table id='table-obyavi'>
+            var html = `<table id='table-obyavi' >
                 
                         <td width='80px'>${obyava.date}<br>
                         <p><img src='assets/images/stars-${Math.round(obyava.stars)}.jpg' alt='golden stars' width='auto' height='15px' /></p>
@@ -179,33 +184,89 @@ $(function() {
     }
     var buttonObqvi = document.getElementById('buttonObqvi');
     buttonObqvi.addEventListener('click', function() {
-        pokajiObqvi(vsichkiObqvi, obyavi)
+        pokajiObqvi(vsichkiObqvi, obyavi);
+        obyavi.insertBefore(a, obyavi.firstChild);
+        a.onclick = function() {
+            obyavi.insertBefore(tursachka, obyavi.children[1])
+            for (let i = 2; i < obyavi.children.length; i++) {
+                obyavi.children[i].classList.add('col-md-10')
+            };
+            obyavi.removeChild(a)
+
+        }
     });
 
     var buttonObqvi = Array.from(document.getElementsByClassName('buttonObqvi'));
     buttonObqvi.forEach(button => {
-
         button.addEventListener('click', function() {
             var name = button.parentNode.querySelector('h3').textContent;
             var firma = arrayFirmi.find(f => f.name == name);
             var logo = document.createElement('img');
             var logoDiv = document.createElement('div');
             logo.src = firma.logo;
-
             logo.id = 'logoPriObqviNaFirmata'
 
             main.forEach(div => div.style.display = 'none');
-
             obyavi.style.display = 'block';
             var info = document.createElement('h4');
             info.textContent = firma.info;
             info.style.clear = 'both';
-
-
             pokajiObqvi(firma.obqvi, obyavi);
             obyavi.firstElementChild.insertBefore(info, obyavi.firstElementChild.firstElementChild);
             obyavi.firstElementChild.insertBefore(logo, obyavi.firstElementChild.firstElementChild)
         })
     })
+
+    // Търсене на обяви
+    document.getElementById('buttonTursi').addEventListener('click', function() {
+        var place = document.getElementById('place').value;
+        var category = Array.from(document.querySelectorAll('input[name="kategoriq"]'));
+        var type = Array.from(document.querySelectorAll('input[name="type"]'));
+        var dumi = document.getElementById('turnesiDumi').value;
+        var searchObqvi = document.getElementById('searchObqvi');
+        var obqvi = vsichkiObqvi.filter(function(obqva) {
+            if (obqva.place == place) {
+                if (category.some(function(c) {
+                        if (c.checked && categories[c.value] == obqva.category) {
+                            return true;
+                        }
+                    })) {
+                    if (type.some(function(t) {
+                            if (t.checked && types[t.value] == obqva.type) {
+                                return true;
+                            }
+                        })) {
+                        return obqva;
+                    }
+                }
+            }
+        })
+        if (dumi) {
+            obqvi = obqvi.filter(o => o.name.toLowerCase().indexOf(dumi.toLowerCase()) != -1);
+        }
+        pokajiObqvi(obqvi, searchObqvi);
+        main.forEach(div => div.style.display = 'none');
+        searchObqvi.style.display = 'block';
+        a.onclick = function() {
+            searchObqvi.insertBefore(tursachka, searchObqvi.children[1])
+            for (let i = 2; i < searchObqvi.children.length; i++) {
+                searchObqvi.children[i].classList.add('col-md-10')
+            };
+            searchObqvi.removeChild(a)
+
+        }
+        searchObqvi.insertBefore(a, searchObqvi.firstChild);
+        buttonForSearch = document.getElementById('buttonForSearch');
+    });
+
+
+    if (localStorage.getItem('place') != null)
+        document.getElementById('place').value = JSON.parse(localStorage.getItem('place'));
+    else {
+        localStorage.setItem('place', JSON.stringify(document.getElementById('place').value));
+    }
+    document.getElementById('place').onchange = function() {
+        localStorage.setItem('place', JSON.stringify(document.getElementById('place').value));
+    }
 
 });
