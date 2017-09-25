@@ -1,191 +1,200 @@
-    .header {
-        padding: 15px;
-    }
-    
-    #search {
-        margin-top: 65px;
-        margin-left: 70px;
-        width: 130px;
-        box-sizing: border-box;
-        border: 2px solid #ccc;
-        border-radius: 5px;
-        font-size: 16px;
-        background-color: white;
-        background-image: url('images/Search-icon.png');
-        background-position: 5px 4px;
-        background-repeat: no-repeat;
-        padding: 5px 15px 4px 30px;
-        background-size: 22px 22px;
-        transition: width 0.5s ease-in-out;
-        transition: margin 0.5s ease-in-out;
-    }
-    
-    #search:focus {
-        width: 130%;
-        margin-left: -62px;
-    }
-    
-    .pointer {
-        cursor: pointer;
-    }
-    
-    @media screen and (max-width:768px) {
-        #logo {
-            display: block;
-            margin: 5px auto;
-        }
-        #search {
-            display: block;
-            margin: 5px auto;
-            transition: width 0.5s ease-in-out;
-        }
-        #search:focus {
-            width: 80%;
-            margin-left: 2em;
-        }
-        .affix {
-            width: 94%;
-        }
-    }
-    
-    footer {
-        padding-top: 15px;
-    }
-    
-    .footerP {
-        padding: 4px 25%;
-    }
-    
-    .social:hover {
-        -webkit-transform: scale(1.1);
-        -moz-transform: scale(1.1);
-        -o-transform: scale(1.1);
-    }
-    
-    .social {
-        -webkit-transform: scale(0.8);
-        /* Browser Variations: */
-        -moz-transform: scale(0.8);
-        -o-transform: scale(0.8);
-        -webkit-transition-duration: 0.5s;
-        -moz-transition-duration: 0.5s;
-        -o-transition-duration: 0.5s;
-    }
-    
-    #social-fb:hover {
-        color: #3B5998;
-    }
-    
-    #social-tw:hover {
-        color: #4099FF;
-    }
-    
-    #social-gp:hover {
-        color: #d34836;
-    }
-    
-    #social-em:hover {
-        color: #f39c12;
-    }
-    
-    #last {
-        margin: 10px 40%;
-    }
-    
-    .affix {
-        top: 0;
-    }
-    
-    .affix~.main {
-        padding-top: 70px;
-    }
-    
-    .vsqkaFirma {
-        display: inline-block;
-        width: 100%;
-        border: 1px solid black;
-    }
-    
-    #faq>h2 {
-        margin: 15px 35%;
-        text-shadow: 1px 1px 3px black;
-    }
+.header {
+    padding: 15px;
+}
 
-    #buttonInfo {
-       position: relative;
-       display: inline-block;
-       width: 10em;
-       height: 2.5em;
-       line-height: 2.5em;
-       vertical-align: center;
-       text-decoration: none;
-       text-shadow: 0 -1px 1px #777;
-       color: #fff;
-       outline: none;
-       border: 2px solid #9A8F8F;
-       border-radius: 5px;
-       box-shadow: 0 0 0 60px rgba(0,0,0,0) inset, .1em .1em .2em #4F4D4D;
-       background: linear-gradient(#D7CECE, #A39494 48%, #8E8686 52%, #5B5858);
-    }
+#search {
+    margin-top: 65px;
+    margin-left: 70px;
+    width: 130px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: white;
+    background-image: url('images/Search-icon.png');
+    background-position: 5px 4px;
+    background-repeat: no-repeat;
+    padding: 5px 15px 4px 30px;
+    background-size: 22px 22px;
+    transition: width 0.5s ease-in-out;
+    transition: margin 0.5s ease-in-out;
+}
 
-    #buttonInfo:active {
-        top: .1em;
-        left: .1em;
-        box-shadow: 0 0 0 60px rgba(0,0,0,.05) inset;
-    }
+#search:focus {
+    width: 130%;
+    margin-left: -62px;
+}
 
-    #buttonObqvi {
-        position: relative;
-        display: inline-block;
-        width: 10em;
-        height: 2.5em;
-        line-height: 2.5em;
-        vertical-align: center;
-        text-decoration: none;
-        text-shadow: 0 -1px 1px #777;
-        color: #fff;
-        outline: none;
-        border: 2px solid #9A8F8F;
-        border-radius: 5px;
-        box-shadow: 0 0 0 60px rgba(0,0,0,0) inset, .1em .1em .2em #4F4D4D;
-        background: linear-gradient(#D7CECE, #A39494 48%, #8E8686 52%, #5B5858);
-     }
- 
-     #buttonObqvi:active {
-         top: .1em;
-         left: .1em;
-         box-shadow: 0 0 0 60px rgba(0,0,0,.05) inset;
-     }
+.pointer {
+    cursor: pointer;
+}
 
-
-     #obyava-name {
-         display:block;
-         text-align: center;
-         font-size: 15px;
-         font-family: Verdana, Geneva, Tahoma, sans-serif;
-         color: red;
-     }
-
-     #table-obyavi {
-        border: 1px solid black;
-        margin:auto;
-     }
-
-    #logo-obyava {
+@media all and (max-width:768px) {
+    #logo {
         display: block;
-        float: right;
-        padding-right: 25px;
-        padding-bottom: 5px;
+        margin: 5px auto;
     }
-
-    #obyava-name {
-        margin:auto;
-        padding-top: 15px;
-        font-family: Arial, Helvetica, sans-serif;
-        font-weight: bold;
+    #search {
+        display: block;
+        margin: 5px auto;
+        transition: width 0.5s ease-in-out;
     }
+    #search:focus {
+        width: 80%;
+        margin-left: 2em;
+    }
+    .affix {
+        width: 94%;
+    }
+    #logoPriObqviNaFirmata {
+        width: 150px !important;
+    }
+}
 
+footer {
+    padding-top: 15px;
+}
+
+.footerP {
+    padding: 4px 25%;
+}
+
+.social:hover {
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -o-transform: scale(1.1);
+}
+
+.social {
+    -webkit-transform: scale(0.8);
+    /* Browser Variations: */
+    -moz-transform: scale(0.8);
+    -o-transform: scale(0.8);
+    -webkit-transition-duration: 0.5s;
+    -moz-transition-duration: 0.5s;
+    -o-transition-duration: 0.5s;
+}
+
+#social-fb:hover {
+    color: #3B5998;
+}
+
+#social-tw:hover {
+    color: #4099FF;
+}
+
+#social-gp:hover {
+    color: #d34836;
+}
+
+#social-em:hover {
+    color: #f39c12;
+}
+
+#last {
+    margin: 10px 40%;
+}
+
+.affix {
+    top: 0;
+}
+
+.affix~.main {
+    padding-top: 70px;
+}
+
+.vsqkaFirma {
+    display: inline-block;
+    width: 100%;
+    border: 1px solid black;
+}
+
+#faq>h2 {
+    margin: 15px 35%;
+    text-shadow: 1px 1px 3px black;
+}
+
+.buttonInfo {
+    position: relative;
+    display: inline-block;
+    width: 10em;
+    height: 2.5em;
+    line-height: 2.5em;
+    vertical-align: center;
+    text-decoration: none;
+    text-shadow: 0 -1px 1px #777;
+    color: #fff;
+    outline: none;
+    border: 2px solid #9A8F8F;
+    border-radius: 5px;
+    box-shadow: 0 0 0 60px rgba(0, 0, 0, 0) inset, .1em .1em .2em #4F4D4D;
+    background: linear-gradient(#D7CECE, #A39494 48%, #8E8686 52%, #5B5858);
+}
+
+.buttonInfo:active {
+    top: .1em;
+    left: .1em;
+    box-shadow: 0 0 0 60px rgba(0, 0, 0, .05) inset;
+}
+
+.buttonObqvi {
+    position: relative;
+    display: inline-block;
+    width: 10em;
+    height: 2.5em;
+    line-height: 2.5em;
+    vertical-align: center;
+    text-decoration: none;
+    text-shadow: 0 -1px 1px #777;
+    color: #fff;
+    outline: none;
+    border: 2px solid #9A8F8F;
+    border-radius: 5px;
+    box-shadow: 0 0 0 60px rgba(0, 0, 0, 0) inset, .1em .1em .2em #4F4D4D;
+    background: linear-gradient(#D7CECE, #A39494 48%, #8E8686 52%, #5B5858);
+}
+
+.buttonObqvi:active {
+    top: .1em;
+    left: .1em;
+    box-shadow: 0 0 0 60px rgba(0, 0, 0, .05) inset;
+}
+
+#obyava-name {
+    display: block;
+    text-align: center;
+    font-size: 15px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: red;
+}
+
+#table-obyavi {
+    border: 1px solid black;
+    margin: auto;
+}
+
+#logo-obyava {
+    display: block;
+    float: right;
+    padding-right: 25px;
+    padding-bottom: 5px;
+}
+
+#obyava-name {
+    margin: auto;
+    padding-top: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+<<<<<<< HEAD
     #osnovno {
         color:red;
         background-color: blue;
     }
+=======
+#logoPriObqviNaFirmata {
+    width: 400px;
+    margin: 15px 30%;
+}
+>>>>>>> 758b0b4cbed46337f6ed39908d35583dcd531807
