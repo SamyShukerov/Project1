@@ -131,14 +131,12 @@ footer {
     font-weight: bold;
 }
 
-<<<<<<< HEAD
-    #osnovno {
-        color:red;
-        background-color: blue;
-    }
-=======
+#osnovno {
+    color: red;
+    background-color: blue;
+}
+
 #logoPriObqviNaFirmata {
     width: 400px;
     margin: 15px 30%;
 }
->>>>>>> 758b0b4cbed46337f6ed39908d35583dcd531807
