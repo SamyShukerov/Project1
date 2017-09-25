@@ -19,48 +19,45 @@ $(function() {
         var user = document.getElementById('regUser').value;
         var pass = document.getElementById('regPass').value;
         var mail = document.getElementById('mail').value;
+
         console.log(user + '  ' + pass);
         if (userList.addUser(user, pass, mail)) {
             userList.addUser(user, pass, mail);
             document.getElementById('regBtn').classList.remove('btn-primary');
             document.getElementById('regBtn').classList.add('btn-success');
             document.getElementById('regP').textContent = 'Вие успешно се регистрирахте !';
-            document.getElementById('regP').classList.remove('text-danger')
-            document.getElementById('regP').classList.add('text-success')
+            document.getElementById('regP').classList.remove('text-danger');
+            document.getElementById('regP').classList.add('text-success');
         } else {
             document.getElementById('regP').textContent = 'Невалиден потребител и/или парола';
         }
     });
-
-
 
     // vhod
     $('#vhodBtn').click(function() {
         var user = document.getElementById('vhodUser').value;
         var pass = document.getElementById('vhodPass').value;
         var vhod = userList.login(user, pass);
+
         if (userList.login(user, pass)) {
             document.getElementById('vhodBtn').classList.remove('btn-primary');
             document.getElementById('vhodBtn').classList.add('btn-success');
             document.getElementById('vhodP').textContent = 'Вие успешно влезнахте в своя профил !';
-            document.getElementById('vhodP').classList.remove('text-danger')
-            document.getElementById('vhodP').classList.add('text-success')
+            document.getElementById('vhodP').classList.remove('text-danger');
+            document.getElementById('vhodP').classList.add('text-success');
             var login = document.getElementById('login').parentNode;
             var rr = document.getElementById('register');
             var name = document.createElement('a');
+
             name.innerHTML = '<span class="glyphicon glyphicon-user"></span>  <span style="cursor:pointer">' + user + '</span>';
             rr.parentNode.appendChild(name);
-            rr.parentNode.removeChild(rr)
+            rr.parentNode.removeChild(rr);
             login.parentNode.removeChild(login);
-
         } else {
             document.getElementById('vhodP').textContent = 'Невалиден потребител и/или парола';
-            document.getElementById('vhodP').classList.add('text-danger')
+            document.getElementById('vhodP').classList.add('text-danger');
         }
-
-    })
-
-
+    });
 
     // Login
     $('#login').click(function() {
@@ -149,7 +146,6 @@ $(function() {
         }, false);
     });
 
-
     // function za pokazvane na obqvi
     function pokajiObqvi(arrObqvi, container) {
         obyavi.innerHTML = '';
@@ -178,34 +174,35 @@ $(function() {
         });
     }
     var buttonObqvi = document.getElementById('buttonObqvi');
+
     buttonObqvi.addEventListener('click', function() {
-        pokajiObqvi(vsichkiObqvi, obyavi)
+        pokajiObqvi(vsichkiObqvi, obyavi);
     });
 
     var buttonObqvi = Array.from(document.getElementsByClassName('buttonObqvi'));
-    buttonObqvi.forEach(button => {
 
+    buttonObqvi.forEach(button => {
         button.addEventListener('click', function() {
             var name = button.parentNode.querySelector('h3').textContent;
             var firma = arrayFirmi.find(f => f.name == name);
             var logo = document.createElement('img');
             var logoDiv = document.createElement('div');
+
             logo.src = firma.logo;
 
-            logo.id = 'logoPriObqviNaFirmata'
+            logo.id = 'logoPriObqviNaFirmata';
 
             main.forEach(div => div.style.display = 'none');
 
             obyavi.style.display = 'block';
             var info = document.createElement('h4');
+
             info.textContent = firma.info;
             info.style.clear = 'both';
 
-
             pokajiObqvi(firma.obqvi, obyavi);
             obyavi.firstElementChild.insertBefore(info, obyavi.firstElementChild.firstElementChild);
-            obyavi.firstElementChild.insertBefore(logo, obyavi.firstElementChild.firstElementChild)
-        })
-    })
-
+            obyavi.firstElementChild.insertBefore(logo, obyavi.firstElementChild.firstElementChild);
+        });
+    });
 });
