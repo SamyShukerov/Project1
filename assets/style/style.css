@@ -25,7 +25,8 @@
     margin-left: -62px;
 }
 
-.pointer {
+.pointer,
+a {
     cursor: pointer;
 }
 
