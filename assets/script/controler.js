@@ -19,48 +19,45 @@ $(function() {
         var user = document.getElementById('regUser').value;
         var pass = document.getElementById('regPass').value;
         var mail = document.getElementById('mail').value;
+
         console.log(user + '  ' + pass);
         if (userList.addUser(user, pass, mail)) {
             userList.addUser(user, pass, mail);
             document.getElementById('regBtn').classList.remove('btn-primary');
             document.getElementById('regBtn').classList.add('btn-success');
             document.getElementById('regP').textContent = 'Вие успешно се регистрирахте !';
-            document.getElementById('regP').classList.remove('text-danger')
-            document.getElementById('regP').classList.add('text-success')
+            document.getElementById('regP').classList.remove('text-danger');
+            document.getElementById('regP').classList.add('text-success');
         } else {
             document.getElementById('regP').textContent = 'Невалиден потребител и/или парола';
         }
     });
-
-
 
     // vhod
     $('#vhodBtn').click(function() {
         var user = document.getElementById('vhodUser').value;
         var pass = document.getElementById('vhodPass').value;
         var vhod = userList.login(user, pass);
+
         if (userList.login(user, pass)) {
             document.getElementById('vhodBtn').classList.remove('btn-primary');
             document.getElementById('vhodBtn').classList.add('btn-success');
             document.getElementById('vhodP').textContent = 'Вие успешно влезнахте в своя профил !';
-            document.getElementById('vhodP').classList.remove('text-danger')
-            document.getElementById('vhodP').classList.add('text-success')
+            document.getElementById('vhodP').classList.remove('text-danger');
+            document.getElementById('vhodP').classList.add('text-success');
             var login = document.getElementById('login').parentNode;
             var rr = document.getElementById('register');
             var name = document.createElement('a');
+
             name.innerHTML = '<span class="glyphicon glyphicon-user"></span>  <span style="cursor:pointer">' + user + '</span>';
             rr.parentNode.appendChild(name);
-            rr.parentNode.removeChild(rr)
+            rr.parentNode.removeChild(rr);
             login.parentNode.removeChild(login);
-
         } else {
             document.getElementById('vhodP').textContent = 'Невалиден потребител и/или парола';
-            document.getElementById('vhodP').classList.add('text-danger')
+            document.getElementById('vhodP').classList.add('text-danger');
         }
-
-    })
-
-
+    });
 
     // Login
     $('#login').click(function() {
@@ -81,9 +78,9 @@ $(function() {
     var buttonFAQ = document.getElementById('vuprosi');
     var faq = document.getElementById('faq');
     var a = document.createElement('a');
+
     a.id = 'buttonForSearch';
     a.textContent = 'Промени търсенето';
-
 
     buttonFAQ.addEventListener('click', function() {
         main.forEach(div => div.style.display = 'none');
@@ -108,7 +105,7 @@ $(function() {
         button.addEventListener('click', function(event) {
             main.forEach(div => div.style.display = 'none');
             home.style.display = 'block';
-            home.insertBefore(tursachka, home.firstChild)
+            home.insertBefore(tursachka, home.firstChild);
         });
     });
     arrayFirmi.forEach(firma => {
@@ -154,7 +151,6 @@ $(function() {
         }, false);
     });
 
-
     // function za pokazvane na obqvi
     function pokajiObqvi(arrObqvi, container) {
         container.innerHTML = '';
@@ -183,39 +179,43 @@ $(function() {
         });
     }
     var buttonObqvi = document.getElementById('buttonObqvi');
+
     buttonObqvi.addEventListener('click', function() {
         pokajiObqvi(vsichkiObqvi, obyavi);
         obyavi.insertBefore(a, obyavi.firstChild);
         a.onclick = function() {
-            obyavi.insertBefore(tursachka, obyavi.children[1])
+            obyavi.insertBefore(tursachka, obyavi.children[1]);
             for (let i = 2; i < obyavi.children.length; i++) {
-                obyavi.children[i].classList.add('col-md-10')
-            };
-            obyavi.removeChild(a)
-
-        }
+                obyavi.children[i].classList.add('col-md-10');
+            }
+            obyavi.removeChild(a);
+        };
     });
 
     var buttonObqvi = Array.from(document.getElementsByClassName('buttonObqvi'));
+
     buttonObqvi.forEach(button => {
         button.addEventListener('click', function() {
             var name = button.parentNode.querySelector('h3').textContent;
             var firma = arrayFirmi.find(f => f.name == name);
             var logo = document.createElement('img');
             var logoDiv = document.createElement('div');
+
             logo.src = firma.logo;
-            logo.id = 'logoPriObqviNaFirmata'
+
+            logo.id = 'logoPriObqviNaFirmata';
 
             main.forEach(div => div.style.display = 'none');
             obyavi.style.display = 'block';
             var info = document.createElement('h4');
+
             info.textContent = firma.info;
             info.style.clear = 'both';
             pokajiObqvi(firma.obqvi, obyavi);
             obyavi.firstElementChild.insertBefore(info, obyavi.firstElementChild.firstElementChild);
-            obyavi.firstElementChild.insertBefore(logo, obyavi.firstElementChild.firstElementChild)
-        })
-    })
+            obyavi.firstElementChild.insertBefore(logo, obyavi.firstElementChild.firstElementChild);
+        });
+    });
 
     // Търсене на обяви
     document.getElementById('buttonTursi').addEventListener('click', function() {
@@ -227,20 +227,21 @@ $(function() {
         var obqvi = vsichkiObqvi.filter(function(obqva) {
             if (obqva.place == place) {
                 if (category.some(function(c) {
-                        if (c.checked && categories[c.value] == obqva.category) {
+                    if (c.checked && categories[c.value] == obqva.category) {
+                        return true;
+                    }
+                })) {
+                    if (type.some(function(t) {
+                        if (t.checked && types[t.value] == obqva.type) {
                             return true;
                         }
                     })) {
-                    if (type.some(function(t) {
-                            if (t.checked && types[t.value] == obqva.type) {
-                                return true;
-                            }
-                        })) {
                         return obqva;
                     }
                 }
             }
-        })
+        });
+
         if (dumi) {
             obqvi = obqvi.filter(o => o.name.toLowerCase().indexOf(dumi.toLowerCase()) != -1);
         }
@@ -248,25 +249,22 @@ $(function() {
         main.forEach(div => div.style.display = 'none');
         searchObqvi.style.display = 'block';
         a.onclick = function() {
-            searchObqvi.insertBefore(tursachka, searchObqvi.children[1])
+            searchObqvi.insertBefore(tursachka, searchObqvi.children[1]);
             for (let i = 2; i < searchObqvi.children.length; i++) {
-                searchObqvi.children[i].classList.add('col-md-10')
-            };
-            searchObqvi.removeChild(a)
-
-        }
+                searchObqvi.children[i].classList.add('col-md-10');
+            }
+            searchObqvi.removeChild(a);
+        };
         searchObqvi.insertBefore(a, searchObqvi.firstChild);
         buttonForSearch = document.getElementById('buttonForSearch');
     });
 
-
     if (localStorage.getItem('place') != null)
-        document.getElementById('place').value = JSON.parse(localStorage.getItem('place'));
+        {document.getElementById('place').value = JSON.parse(localStorage.getItem('place'));}
     else {
         localStorage.setItem('place', JSON.stringify(document.getElementById('place').value));
     }
     document.getElementById('place').onchange = function() {
         localStorage.setItem('place', JSON.stringify(document.getElementById('place').value));
-    }
-
+    };
 });
