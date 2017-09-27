@@ -160,16 +160,25 @@ $(function() {
             div.style.padding = '5px';
 
             var html = `<table id='table-obyavi' >
-                
+                        <tr>
                         <td width='80px'>${obyava.date}<br>
                         <p><img src='assets/images/stars-${Math.round(obyava.stars)}.jpg' alt='golden stars' width='auto' height='15px' /></p>
                         </td>
                     
-                        <td width='850px'><h3 id='obyava-name'>${obyava.name}</h3>
+                        <td width='850px'><h3 id='obyava-name'><a role="button" data-toggle="collapse" href="#${obyava.id}" aria-expanded="false" aria-controls="${obyava.id}">${obyava.name}</a></h3>
                         <img src='${obyava.firma.logo}' id='logo-obyava' alt='logo na Imperia' width='150px' height="auto" />
                         </td>
            
-              
+                        </tr>
+                        <tr>
+                        <td colspan='2'>
+                        <div class="collapse" id="${obyava.id}">
+                        <div class="well">
+                        ${obyava.info}
+                        </div>
+                      </div>
+                        </td>
+                        </tr>
                      </table>`;
 
             div.innerHTML = html;
@@ -259,9 +268,7 @@ $(function() {
         buttonForSearch = document.getElementById('buttonForSearch');
     });
 
-    if (localStorage.getItem('place') != null)
-        {document.getElementById('place').value = JSON.parse(localStorage.getItem('place'));}
-    else {
+    if (localStorage.getItem('place') != null) { document.getElementById('place').value = JSON.parse(localStorage.getItem('place')); } else {
         localStorage.setItem('place', JSON.stringify(document.getElementById('place').value));
     }
     document.getElementById('place').onchange = function() {

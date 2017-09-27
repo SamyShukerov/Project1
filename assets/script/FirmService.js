@@ -29,11 +29,20 @@ var types = ['Пълно работно време', 'Непълно работ�
 var vsichkiObqvi = [];
 // Constructor Obqva
 
+const generatorId = () => {
+    let id = 0;
+
+    return () => id++;
+};
+
+const obyavaIdGenerator = generatorId();
+
 function Obqva(name, grad, data, info, stars) {
     this.name = name;
     this.info = info;
     this.firma = null;
     this.place = grad;
+    this.id = obyavaIdGenerator();
     this.date = data;
     this.stars = stars;
     this.category = categories[Math.floor(Math.random() * categories.length)];
