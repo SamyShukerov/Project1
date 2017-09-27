@@ -106,6 +106,7 @@ $(function() {
             main.forEach(div => div.style.display = 'none');
             home.style.display = 'block';
             home.insertBefore(tursachka, home.firstChild);
+            tursachka.style.height = '100%'
         });
     });
     arrayFirmi.forEach(firma => {
@@ -159,17 +160,26 @@ $(function() {
 
             div.style.padding = '5px';
 
-            var html = `<table id='table-obyavi' >
-                
+            var html = `<table id='table-obyavi' class='col-md-12' >
+                        <tr>
                         <td width='80px'>${obyava.date}<br>
                         <p><img src='assets/images/stars-${Math.round(obyava.stars)}.jpg' alt='golden stars' width='auto' height='15px' /></p>
                         </td>
                     
-                        <td width='850px'><h3 id='obyava-name'>${obyava.name}</h3>
+                        <td width='850px'><h3 id='obyava-name'><a role="button" data-toggle="collapse" href="#${obyava.id}" aria-expanded="false" aria-controls="${obyava.id}">${obyava.name}</a></h3>
                         <img src='${obyava.firma.logo}' id='logo-obyava' alt='logo na Imperia' width='150px' height="auto" />
                         </td>
            
-              
+                        </tr>
+                        <tr>
+                        <td colspan='2'>
+                        <div class="collapse" id="${obyava.id}">
+                        <div class="well">
+                        ${obyava.info}
+                        </div>
+                      </div>
+                        </td>
+                        </tr>
                      </table>`;
 
             div.innerHTML = html;
@@ -189,6 +199,7 @@ $(function() {
                 obyavi.children[i].classList.add('col-md-10');
             }
             obyavi.removeChild(a);
+            tursachka.style.height = obyavi.getBoundingClientRect().height + 'px';
         };
     });
 
@@ -227,15 +238,15 @@ $(function() {
         var obqvi = vsichkiObqvi.filter(function(obqva) {
             if (obqva.place == place) {
                 if (category.some(function(c) {
-                    if (c.checked && categories[c.value] == obqva.category) {
-                        return true;
-                    }
-                })) {
-                    if (type.some(function(t) {
-                        if (t.checked && types[t.value] == obqva.type) {
+                        if (c.checked && categories[c.value] == obqva.category) {
                             return true;
                         }
                     })) {
+                    if (type.some(function(t) {
+                            if (t.checked && types[t.value] == obqva.type) {
+                                return true;
+                            }
+                        })) {
                         return obqva;
                     }
                 }
@@ -254,14 +265,13 @@ $(function() {
                 searchObqvi.children[i].classList.add('col-md-10');
             }
             searchObqvi.removeChild(a);
+            searchObqvi.children[0].style.minHeight = '100%';
         };
         searchObqvi.insertBefore(a, searchObqvi.firstChild);
         buttonForSearch = document.getElementById('buttonForSearch');
     });
 
-    if (localStorage.getItem('place') != null)
-        {document.getElementById('place').value = JSON.parse(localStorage.getItem('place'));}
-    else {
+    if (localStorage.getItem('place') != null) { document.getElementById('place').value = JSON.parse(localStorage.getItem('place')); } else {
         localStorage.setItem('place', JSON.stringify(document.getElementById('place').value));
     }
     document.getElementById('place').onchange = function() {
