@@ -68,7 +68,7 @@ $(function() {
         $('#signUp').modal();
     });
     var tursachka = document.getElementById('tursachka');
-    var main = Array.from(document.getElementsByClassName('main'));
+    var main = document.getElementsByClassName('main');
     var firmi = document.getElementById('firmi');
     var buttonFirmi = Array.from(document.getElementsByClassName('buttonFirmi'));
     var obyavi = document.getElementById('obyavi');
@@ -83,30 +83,30 @@ $(function() {
     a.textContent = 'Промени търсенето';
 
     buttonFAQ.addEventListener('click', function() {
-        main.forEach(div => div.style.display = 'none');
+        Array.from(main).forEach(div => div.style.display = 'none');
         faq.style.display = 'block';
     });
 
     buttonFirmi.forEach(button => {
         button.addEventListener('click', function(event) {
-            main.forEach(div => div.style.display = 'none');
+            Array.from(main).forEach(div => div.style.display = 'none');
             firmi.style.display = 'block';
         }, false);
     });
 
     buttonObyavi.forEach(button => {
         button.addEventListener('click', function(event) {
-            main.forEach(div => div.style.display = 'none');
+            Array.from(main).forEach(div => div.style.display = 'none');
             obyavi.style.display = 'block';
         }, false);
     });
 
     Array.from(buttonHome).forEach(button => {
         button.addEventListener('click', function(event) {
-            main.forEach(div => div.style.display = 'none');
+            Array.from(main).forEach(div => div.style.display = 'none');
             home.style.display = 'block';
             home.insertBefore(tursachka, home.firstChild);
-            tursachka.style.height = '100%'
+            tursachka.style.height = 'auto'
         });
     });
     arrayFirmi.forEach(firma => {
@@ -157,16 +157,15 @@ $(function() {
         container.innerHTML = '';
         arrObqvi.forEach(obyava => {
             var div = document.createElement('div');
-
             div.style.padding = '5px';
-
+            div.classList.add('pag')
             var html = `<table id='table-obyavi' class='col-md-12' >
                         <tr>
                         <td width='80px'>${obyava.date}<br>
                         <p><img src='assets/images/stars-${Math.round(obyava.stars)}.jpg' alt='golden stars' width='auto' height='15px' /></p>
                         </td>
                     
-                        <td width='850px'><h3 id='obyava-name'><a role="button" data-toggle="collapse" href="#${obyava.id}" aria-expanded="false" aria-controls="${obyava.id}">${obyava.name}</a></h3>
+                        <td width='850px'><h3 id='obyava-name'><a role="button" class="obyavaName" data-toggle="collapse" href="#${obyava.id}" aria-expanded="false" aria-controls="${obyava.id}">${obyava.name}</a></h3>
                         <img src='${obyava.firma.logo}' id='logo-obyava' alt='logo na Imperia' width='150px' height="auto" />
                         </td>
            
@@ -185,8 +184,34 @@ $(function() {
             div.innerHTML = html;
 
             // div.appendChild(p);
-            container.appendChild(div);
+            $('#obyavi').append(div);
         });
+        if ($('div.my-page-navigation').length > 0) {
+            $('div.my-page-navigation').get(0).remove();
+        }
+
+        $('#obyavi').paginate({
+            limit: 10, // 10 elements per page 
+            initialPage: 0, // Start on second page 
+            previous: true, // Show previous button 
+            // previousText: 'Предишна страница', // Change previous button text 
+            next: true, // Show previous button 
+            // nextText: 'Следваща страница', // Change next button text 
+            first: false,
+            last: false,
+            optional: false, // Always show the navigation menu 
+            onCreate: function(obj) { console.log('Pagination done!'); }, // `onCreate` callback 
+            onSelect: function(obj, i) { console.log('Page ' + (i + 1) + ' selected!'); }, // `onSelect` callback 
+            childrenSelector: 'div.pag', // Paginate the rows with the `pag` class 
+            navigationClass: 'my-page-navigation', // New css class added to the navigation menu 
+            pageToText: function(i) { return (i + 1).toString(16); } // Page numbers will be shown on hexadecimal notation 
+        });
+        $('div.my-page-navigation').addClass("main");
+
+        $('div.my-page-navigation').attr('id', 'pagination');
+        $('div.my-page-navigation').css('display', 'block')
+
+
     }
     var buttonObqvi = document.getElementById('buttonObqvi');
 
@@ -216,7 +241,7 @@ $(function() {
 
             logo.id = 'logoPriObqviNaFirmata';
 
-            main.forEach(div => div.style.display = 'none');
+            Array.from(main).forEach(div => div.style.display = 'none');
             obyavi.style.display = 'block';
             var info = document.createElement('h4');
 
@@ -257,7 +282,7 @@ $(function() {
             obqvi = obqvi.filter(o => o.name.toLowerCase().indexOf(dumi.toLowerCase()) != -1);
         }
         pokajiObqvi(obqvi, searchObqvi);
-        main.forEach(div => div.style.display = 'none');
+        Array.from(main).forEach(div => div.style.display = 'none');
         searchObqvi.style.display = 'block';
         a.onclick = function() {
             searchObqvi.insertBefore(tursachka, searchObqvi.children[1]);
@@ -265,7 +290,7 @@ $(function() {
                 searchObqvi.children[i].classList.add('col-md-10');
             }
             searchObqvi.removeChild(a);
-            searchObqvi.children[0].style.minHeight = '100%';
+            tursachka.style.height = 'auto';
         };
         searchObqvi.insertBefore(a, searchObqvi.firstChild);
         buttonForSearch = document.getElementById('buttonForSearch');
@@ -277,4 +302,5 @@ $(function() {
     document.getElementById('place').onchange = function() {
         localStorage.setItem('place', JSON.stringify(document.getElementById('place').value));
     };
+
 });
