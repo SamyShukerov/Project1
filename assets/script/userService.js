@@ -7,9 +7,9 @@ var userList = (function() {
     }
 
     function UserList() {
-        if (localStorage.getItem('users') != null)
-            {this._users = JSON.parse(localStorage.getItem('users'));}
-        else {
+        if (localStorage.getItem('users') != null) {
+            this._users = JSON.parse(localStorage.getItem('users'));
+        } else {
             this._users = [new User('Sami', '123456', 'sami@abv.bg'), new User('Rali', '123456', 'rali@abv.bg')];
             localStorage.setItem('users', JSON.stringify(this._users));
         }
@@ -21,8 +21,7 @@ var userList = (function() {
             if (!(this._users.some(user => user.username === username))) {
                 this._users.push(new User(username, password, email));
                 localStorage.setItem('users', JSON.stringify(this._users));
-                
-return true;
+                return true;
             } else {
                 return false;
             }

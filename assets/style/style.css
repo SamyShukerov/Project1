@@ -240,3 +240,25 @@ footer {
 #pagination a[data-selected] {
     background-color: #3d9be0;
 }
+
+body::before {
+    content: "";
+    background-image: url(../images/background.jpg);
+    background-size: cover;
+    background-repeat: repeat-y;
+    opacity: 0.2;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1234;
+}
+
+body {
+    background-color: rgba(113, 180, 210, 0.61)
+}
+
+div.panel {
+    background-color: rgba(113, 180, 210, 0.81)
+}

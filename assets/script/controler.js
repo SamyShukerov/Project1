@@ -154,7 +154,8 @@ $(function() {
 
     // function za pokazvane na obqvi
     function pokajiObqvi(arrObqvi, container) {
-        container.innerHTML = '';
+        container = $('#' + container);
+        container.html('');
         arrObqvi.forEach(obyava => {
             var div = document.createElement('div');
             div.style.padding = '5px';
@@ -184,14 +185,14 @@ $(function() {
             div.innerHTML = html;
 
             // div.appendChild(p);
-            $('#obyavi').append(div);
+            container.append(div);
+
         });
         if ($('div.my-page-navigation').length > 0) {
             $('div.my-page-navigation').get(0).remove();
         }
-
-        $('#obyavi').paginate({
-            limit: 10, // 10 elements per page 
+        container.paginate({
+            limit: 7, // 7 elements per page 
             initialPage: 0, // Start on second page 
             previous: true, // Show previous button 
             // previousText: 'Предишна страница', // Change previous button text 
@@ -199,24 +200,24 @@ $(function() {
             // nextText: 'Следваща страница', // Change next button text 
             first: false,
             last: false,
-            optional: false, // Always show the navigation menu 
+            optional: true, // Always show the navigation menu 
             onCreate: function(obj) { console.log('Pagination done!'); }, // `onCreate` callback 
             onSelect: function(obj, i) { console.log('Page ' + (i + 1) + ' selected!'); }, // `onSelect` callback 
             childrenSelector: 'div.pag', // Paginate the rows with the `pag` class 
             navigationClass: 'my-page-navigation', // New css class added to the navigation menu 
-            pageToText: function(i) { return (i + 1).toString(16); } // Page numbers will be shown on hexadecimal notation 
+            pageToText: function(i) { return (i + 1).toString(10); } // Page numbers will be shown on hexadecimal notation 
         });
+
+
         $('div.my-page-navigation').addClass("main");
 
         $('div.my-page-navigation').attr('id', 'pagination');
-        $('div.my-page-navigation').css('display', 'block')
-
-
+        $('div#pagination').css('display', 'block')
     }
     var buttonObqvi = document.getElementById('buttonObqvi');
 
     buttonObqvi.addEventListener('click', function() {
-        pokajiObqvi(vsichkiObqvi, obyavi);
+        pokajiObqvi(vsichkiObqvi, 'obyavi');
         obyavi.insertBefore(a, obyavi.firstChild);
         a.onclick = function() {
             obyavi.insertBefore(tursachka, obyavi.children[1]);
@@ -247,7 +248,7 @@ $(function() {
 
             info.textContent = firma.info;
             info.style.clear = 'both';
-            pokajiObqvi(firma.obqvi, obyavi);
+            pokajiObqvi(firma.obqvi, 'obyavi');
             obyavi.firstElementChild.insertBefore(info, obyavi.firstElementChild.firstElementChild);
             obyavi.firstElementChild.insertBefore(logo, obyavi.firstElementChild.firstElementChild);
         });
@@ -281,9 +282,11 @@ $(function() {
         if (dumi) {
             obqvi = obqvi.filter(o => o.name.toLowerCase().indexOf(dumi.toLowerCase()) != -1);
         }
-        pokajiObqvi(obqvi, searchObqvi);
+
         Array.from(main).forEach(div => div.style.display = 'none');
+        pokajiObqvi(obqvi, 'searchObqvi');
         searchObqvi.style.display = 'block';
+        $('#pagination').css('display', 'block');
         a.onclick = function() {
             searchObqvi.insertBefore(tursachka, searchObqvi.children[1]);
             for (let i = 2; i < searchObqvi.children.length; i++) {
