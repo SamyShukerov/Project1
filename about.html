@@ -11,16 +11,18 @@
     <!-- jQuery library -->
     <script src="node_modules\jquery\dist\jquery.js"></script>
     <script src="assets/script/paginate.js"></script>
-
+    <!-- Handlebars -->
+    <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
     <!-- Bootstrap  -->
     <script src="node_modules\bootstrap\dist\js\bootstrap.js"></script>
-    <link rel="stylesheet" href="node_modules\bootstrap\dist\css\bootstrap.css">
-    <link rel="stylesheet" href="node_modules\font-awesome\css\font-awesome.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.css">
 
     <!-- // -->
     <link rel="stylesheet" href="assets/style/style.css">
     <link rel="stylesheet" href="assets/style/media.css">
     <script src="assets/script/controler.js"></script>
+    <script src="assets/script/news.js"></script>
 
 
     <style>
@@ -40,7 +42,7 @@
 
                     <div class="col-sm-3">
                         <form>
-                            <input id="search" type="text" name="search" placeholder="Търсене..">
+                            <input id="search" type="text" placeholder="Търсене..">
                         </form>
                     </div>
                 </div>
@@ -69,7 +71,7 @@
                         </ul>
                     </li>
                     <li><a class="buttonFirmi" href="#">Фирми</a></li>
-                    <li><a href="#">Новини</a></li>
+                    <li><a class="novini" href="#">Новини</a></li>
                     <li><a class="buttonObyavi" id='buttonObqvi' href='#'>Всички обяви</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
@@ -287,6 +289,10 @@
         <div id="currentObyavi" class="main container row">
 
         </div>
+        <!-- Новини -->
+        <div id="news" class="main container row">
+
+        </div>
 
         <footer class="container">
 
@@ -298,7 +304,7 @@
                     <p id="vuprosi" class="pointer footerP">FAQ</p>
                 </div>
                 <div class="col-sm-2">
-                    <p class="pointer footerP">Новини</p>
+                    <p class="novini" class="pointer footerP">Новини</p>
                 </div>
                 <div class="col-sm-2">
                     <p class="pointer buttonFirmi footerP">Фирми</p>

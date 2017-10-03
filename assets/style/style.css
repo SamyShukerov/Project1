@@ -262,3 +262,12 @@ body {
 div.panel {
     background-color: rgba(113, 180, 210, 0.81)
 }
+
+.newsInfo {
+    color: #555;
+    font-size: 1.1em;
+}
+
+.newsInfo:hover {
+    text-decoration: none;
+}

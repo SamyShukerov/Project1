@@ -327,6 +327,31 @@ $(function() {
         buttonForSearch = document.getElementById('buttonForSearch');
     });
 
+    $('#search').on('keypress', function(e) {
+
+        if (e.which == 13) {
+
+            var searchWord = this.value.trim().toLowerCase();
+            var obqvi = vsichkiObqvi.filter(o => o.name.toLowerCase().indexOf(searchWord) != -1);
+            console.log(obqvi)
+            pokajiObqvi(obqvi, 'searchObqvi');
+            var searchObqvi = document.getElementById('searchObqvi');
+            Array.from(main).forEach(div => div.style.display = 'none');
+            searchObqvi.style.display = 'block';
+            $('#pagination').css('display', 'block');
+            a.onclick = function() {
+                searchObqvi.insertBefore(tursachka, searchObqvi.children[1]);
+                for (let i = 2; i < searchObqvi.children.length; i++) {
+                    searchObqvi.children[i].classList.add('col-md-10');
+                }
+                searchObqvi.removeChild(a);
+                tursachka.style.height = 'auto';
+            };
+            searchObqvi.insertBefore(a, searchObqvi.firstChild);
+            this.value = '';
+        }
+    })
+
     if (localStorage.getItem('place') != null) { document.getElementById('place').value = JSON.parse(localStorage.getItem('place')); } else {
         localStorage.setItem('place', JSON.stringify(document.getElementById('place').value));
     }
