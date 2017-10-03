@@ -1,5 +1,16 @@
 $(function() {
     var form = document.getElementById('tursachka');
+    var tursachka = document.getElementById('tursachka');
+    var main = document.getElementsByClassName('main');
+    var firmi = document.getElementById('firmi');
+    var buttonFirmi = Array.from(document.getElementsByClassName('buttonFirmi'));
+    var obyavi = document.getElementById('obyavi');
+    var buttonObyavi = Array.from(document.getElementsByClassName('buttonObyavi'));
+    var home = document.getElementById('home');
+    var buttonHome = document.getElementsByClassName('buttonHome');
+    var buttonFAQ = document.getElementById('vuprosi');
+    var faq = document.getElementById('faq');
+    var a = document.createElement('a');
 
     form.addEventListener('click', function(e) {
         if (e.target.type === 'radio') {
@@ -48,11 +59,18 @@ $(function() {
             var login = document.getElementById('login').parentNode;
             var rr = document.getElementById('register');
             var name = document.createElement('a');
+            name.classList.add('currentUser')
 
             name.innerHTML = '<span class="glyphicon glyphicon-user"></span>  <span style="cursor:pointer">' + user + '</span>';
             rr.parentNode.appendChild(name);
             rr.parentNode.removeChild(rr);
             login.parentNode.removeChild(login);
+            name.addEventListener('click', function() {
+                pokajiObqvi(userList.currentUser.obyavi, 'currentObyavi');
+                Array.from(main).forEach(div => div.style.display = 'none');
+                document.getElementById('currentObyavi').style.display = 'block';
+
+            })
         } else {
             document.getElementById('vhodP').textContent = 'Невалиден потребител и/или парола';
             document.getElementById('vhodP').classList.add('text-danger');
@@ -67,17 +85,7 @@ $(function() {
     $('#register').click(function() {
         $('#signUp').modal();
     });
-    var tursachka = document.getElementById('tursachka');
-    var main = document.getElementsByClassName('main');
-    var firmi = document.getElementById('firmi');
-    var buttonFirmi = Array.from(document.getElementsByClassName('buttonFirmi'));
-    var obyavi = document.getElementById('obyavi');
-    var buttonObyavi = Array.from(document.getElementsByClassName('buttonObyavi'));
-    var home = document.getElementById('home');
-    var buttonHome = document.getElementsByClassName('buttonHome');
-    var buttonFAQ = document.getElementById('vuprosi');
-    var faq = document.getElementById('faq');
-    var a = document.createElement('a');
+
 
     a.id = 'buttonForSearch';
     a.textContent = 'Промени търсенето';
@@ -154,7 +162,7 @@ $(function() {
 
     // function za pokazvane na obqvi
     function pokajiObqvi(arrObqvi, container) {
-        container = $('#' + container);
+        var container = $('#' + container);
         container.html('');
         arrObqvi.forEach(obyava => {
             var div = document.createElement('div');
@@ -164,7 +172,7 @@ $(function() {
             var html = `<table id='table-obyavi' class='col-md-12' >
                         <tr>
                         <td width='80px'>${obyava.date}<br>
-                        <p><a id='kandidatstvai_${obyava.id}' href="#" class="button kandidatstvai">Кандидатствай</a></p>
+                       
                         </td>
                     
                         <td width='850px'><h3 id='obyava-name'><a role="button" class="obyavaName" data-toggle="collapse" href="#${obyava.id}" aria-expanded="false" aria-controls="${obyava.id}">${obyava.name}</a></h3>
@@ -177,6 +185,7 @@ $(function() {
                         <div class="collapse" id="${obyava.id}">
                         <div class="well">
                         ${obyava.info}
+                        <p><a id='kandidatstvai_${obyava.id}' href="#" class="button kandidatstvai">Кандидатствай</a></p>
                         </div>
                       </div>
                         </td>
@@ -205,6 +214,7 @@ $(function() {
                     alert('Не може да кандидатстваш, без да се логнеш');
                 }
             });
+
         });
 
         if ($('div.my-page-navigation').length > 0) {
@@ -282,15 +292,15 @@ $(function() {
         var obqvi = vsichkiObqvi.filter(function(obqva) {
             if (obqva.place == place) {
                 if (category.some(function(c) {
-                    if (c.checked && categories[c.value] == obqva.category) {
-                        return true;
-                    }
-                })) {
-                    if (type.some(function(t) {
-                        if (t.checked && types[t.value] == obqva.type) {
+                        if (c.checked && categories[c.value] == obqva.category) {
                             return true;
                         }
                     })) {
+                    if (type.some(function(t) {
+                            if (t.checked && types[t.value] == obqva.type) {
+                                return true;
+                            }
+                        })) {
                         return obqva;
                     }
                 }
