@@ -106,7 +106,7 @@ $(function() {
             Array.from(main).forEach(div => div.style.display = 'none');
             home.style.display = 'block';
             home.insertBefore(tursachka, home.firstChild);
-            tursachka.style.height = 'auto'
+            tursachka.style.height = 'auto';
         });
     });
     arrayFirmi.forEach(firma => {
@@ -158,12 +158,13 @@ $(function() {
         container.html('');
         arrObqvi.forEach(obyava => {
             var div = document.createElement('div');
+
             div.style.padding = '5px';
-            div.classList.add('pag')
+            div.classList.add('pag');
             var html = `<table id='table-obyavi' class='col-md-12' >
                         <tr>
                         <td width='80px'>${obyava.date}<br>
-                        <p><img src='assets/images/stars-${Math.round(obyava.stars)}.jpg' alt='golden stars' width='auto' height='15px' /></p>
+                        <p><a id='kandidatstvai_${obyava.id}' href="#" class="button kandidatstvai">Кандидатствай</a></p>
                         </td>
                     
                         <td width='850px'><h3 id='obyava-name'><a role="button" class="obyavaName" data-toggle="collapse" href="#${obyava.id}" aria-expanded="false" aria-controls="${obyava.id}">${obyava.name}</a></h3>
@@ -186,8 +187,26 @@ $(function() {
 
             // div.appendChild(p);
             container.append(div);
+            var buttonKandidatstvai = document.getElementById('kandidatstvai_' + obyava.id);
 
+            buttonKandidatstvai.addEventListener('click', function(event) {
+                if (userList.currentUser !== null) {
+                    alert('Вие успешно кандидатствахте');
+                    if (userList.currentUser.obyavi === undefined) {
+                        userList.currentUser.obyavi = [];
+                    }
+                    var vecheEDobavena = userList.currentUser.obyavi.some(ob => ob.id === obyava.id);
+
+                    if (vecheEDobavena === false) {
+                        userList.currentUser.obyavi.push(obyava);
+                    }
+                    console.log(userList.currentUser);
+                } else {
+                    alert('Не може да кандидатстваш, без да се логнеш');
+                }
+            });
         });
+
         if ($('div.my-page-navigation').length > 0) {
             $('div.my-page-navigation').get(0).remove();
         }
@@ -208,11 +227,10 @@ $(function() {
             pageToText: function(i) { return (i + 1).toString(10); } // Page numbers will be shown on hexadecimal notation 
         });
 
-
-        $('div.my-page-navigation').addClass("main");
+        $('div.my-page-navigation').addClass('main');
 
         $('div.my-page-navigation').attr('id', 'pagination');
-        $('div#pagination').css('display', 'block')
+        $('div#pagination').css('display', 'block');
     }
     var buttonObqvi = document.getElementById('buttonObqvi');
 
@@ -264,15 +282,15 @@ $(function() {
         var obqvi = vsichkiObqvi.filter(function(obqva) {
             if (obqva.place == place) {
                 if (category.some(function(c) {
-                        if (c.checked && categories[c.value] == obqva.category) {
+                    if (c.checked && categories[c.value] == obqva.category) {
+                        return true;
+                    }
+                })) {
+                    if (type.some(function(t) {
+                        if (t.checked && types[t.value] == obqva.type) {
                             return true;
                         }
                     })) {
-                    if (type.some(function(t) {
-                            if (t.checked && types[t.value] == obqva.type) {
-                                return true;
-                            }
-                        })) {
                         return obqva;
                     }
                 }
@@ -305,5 +323,4 @@ $(function() {
     document.getElementById('place').onchange = function() {
         localStorage.setItem('place', JSON.stringify(document.getElementById('place').value));
     };
-
 });

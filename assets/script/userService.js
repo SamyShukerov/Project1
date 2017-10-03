@@ -4,9 +4,11 @@ var userList = (function() {
         this.username = username;
         this.password = password;
         this.email = email;
+        this.obyavi = [];
     }
 
     function UserList() {
+        this.currentUser = null;
         if (localStorage.getItem('users') != null) {
             this._users = JSON.parse(localStorage.getItem('users'));
         } else {
@@ -21,6 +23,7 @@ var userList = (function() {
             if (!(this._users.some(user => user.username === username))) {
                 this._users.push(new User(username, password, email));
                 localStorage.setItem('users', JSON.stringify(this._users));
+
                 return true;
             } else {
                 return false;
@@ -29,8 +32,16 @@ var userList = (function() {
     };
 
     UserList.prototype.login = function(username, password) {
-        return this._users.some(user => user.username === username &&
-            user.password === password);
+        var imaLiUser = false;
+
+        this._users.forEach(user => {
+            if (user.username === username && user.password === password) {
+                this.currentUser = user;
+                imaLiUser = true;
+            }
+        }, this);
+
+        return imaLiUser;
     };
 
     return new UserList();
