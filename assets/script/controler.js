@@ -66,6 +66,7 @@ $(function() {
             rr.parentNode.removeChild(rr);
             login.parentNode.removeChild(login);
             name.addEventListener('click', function() {
+                $('.obiavi').html('');
                 pokajiObqvi(userList.currentUser.obyavi, 'currentObyavi');
                 Array.from(main).forEach(div => div.style.display = 'none');
                 document.getElementById('currentObyavi').style.display = 'block';
@@ -122,6 +123,7 @@ $(function() {
 
         div.classList.add('vsqkaFirma');
         div.style.padding = '30px';
+        div.style.height = '150px';
         var img = document.createElement('img');
 
         img.src = firma.logo;
@@ -163,29 +165,26 @@ $(function() {
     // function za pokazvane na obqvi
     function pokajiObqvi(arrObqvi, container) {
         var container = $('#' + container);
-        container.html('');
         arrObqvi.forEach(obyava => {
             var div = document.createElement('div');
-
             div.style.padding = '5px';
             div.classList.add('pag');
-            var html = `<table id='table-obyavi' class='col-md-12' >
+            var html = `<table  class='col-md-12 table-obyavi' data-toggle="tooltip" data-placement="right" title="Вид : ${obyava.type}">
                         <tr>
-                        <td width='80px'>${obyava.date}<br>
-                       
+                        <td class="data" width='300px' >${obyava.date}<br>
+                        <img width="80" src="assets/images/stars-${obyava.stars}.png" style="margin-left:-4px" /> <br> Направление : ${obyava.category}
                         </td>
-                    
-                        <td width='850px'><h3 id='obyava-name'><a role="button" class="obyavaName" data-toggle="collapse" href="#${obyava.id}" aria-expanded="false" aria-controls="${obyava.id}">${obyava.name}</a></h3>
-                        <img src='${obyava.firma.logo}' id='logo-obyava' alt='logo na Imperia' width='150px' height="auto" />
+                        <td class="text-center" ><h3 id='obyava-name'><a role="button" class="obyavaName " data-toggle="collapse" href="#${obyava.id}" aria-expanded="false" aria-controls="${obyava.id}">${obyava.name}</a></h3>
+                        <img src='${obyava.firma.logo}' class='logo-obyava' alt='logo na Imperia' width='150px' height="auto" />
                         </td>
-           
                         </tr>
                         <tr>
                         <td colspan='2'>
                         <div class="collapse" id="${obyava.id}">
-                        <div class="well">
+                        <div class="well text-center">
                         ${obyava.info}
-                        <p><a id='kandidatstvai_${obyava.id}' href="#" class="button kandidatstvai">Кандидатствай</a></p>
+                        <p class="kandidatstvai"><a id='kandidatstvai_${obyava.id}'  class="button kandidatstvai">Кандидатствай</a></p>
+                        <p id="info_${obyava.id}"> </p>
                         </div>
                       </div>
                         </td>
@@ -199,19 +198,28 @@ $(function() {
             var buttonKandidatstvai = document.getElementById('kandidatstvai_' + obyava.id);
 
             buttonKandidatstvai.addEventListener('click', function(event) {
+                var p = document.getElementById(`info_${obyava.id}`);
+                p.innerHTML = '';
                 if (userList.currentUser !== null) {
-                    alert('Вие успешно кандидатствахте');
                     if (userList.currentUser.obyavi === undefined) {
                         userList.currentUser.obyavi = [];
                     }
                     var vecheEDobavena = userList.currentUser.obyavi.some(ob => ob.id === obyava.id);
-
                     if (vecheEDobavena === false) {
                         userList.currentUser.obyavi.push(obyava);
+                        p.setAttribute('class', 'text-success')
+                        p.innerText = 'Вие успешно кандидатствахте !'
+                        buttonKandidatstvai.parentNode.appendChild(p)
+                    } else {
+                        p.setAttribute('class', 'text-info')
+                        p.innerText = 'Вече сте кандидатствали за тази обява!'
+                        buttonKandidatstvai.parentNode.appendChild(p)
                     }
                     console.log(userList.currentUser);
                 } else {
-                    alert('Не може да кандидатстваш, без да се логнеш');
+                    p.setAttribute('class', 'text-warning')
+                    p.innerText = 'Моля, първо влезте в профила си !'
+                    buttonKandidatstvai.parentNode.appendChild(p)
                 }
             });
 
@@ -237,7 +245,7 @@ $(function() {
             pageToText: function(i) { return (i + 1).toString(10); } // Page numbers will be shown on hexadecimal notation 
         });
 
-        $('div.my-page-navigation').addClass('main');
+        $('div.my-page-navigation').addClass('main text-center');
 
         $('div.my-page-navigation').attr('id', 'pagination');
         $('div#pagination').css('display', 'block');
@@ -245,6 +253,7 @@ $(function() {
     var buttonObqvi = document.getElementById('buttonObqvi');
 
     buttonObqvi.addEventListener('click', function() {
+        $('.obiavi').html('');
         pokajiObqvi(vsichkiObqvi, 'obyavi');
         obyavi.insertBefore(a, obyavi.firstChild);
         a.onclick = function() {
@@ -276,6 +285,7 @@ $(function() {
 
             info.textContent = firma.info;
             info.style.clear = 'both';
+            $('.obiavi').html('');
             pokajiObqvi(firma.obqvi, 'obyavi');
             obyavi.firstElementChild.insertBefore(info, obyavi.firstElementChild.firstElementChild);
             obyavi.firstElementChild.insertBefore(logo, obyavi.firstElementChild.firstElementChild);
@@ -312,6 +322,7 @@ $(function() {
         }
 
         Array.from(main).forEach(div => div.style.display = 'none');
+        $('.obiavi').html('');
         pokajiObqvi(obqvi, 'searchObqvi');
         searchObqvi.style.display = 'block';
         $('#pagination').css('display', 'block');
@@ -333,7 +344,8 @@ $(function() {
 
             var searchWord = this.value.trim().toLowerCase();
             var obqvi = vsichkiObqvi.filter(o => o.name.toLowerCase().indexOf(searchWord) != -1);
-            console.log(obqvi)
+            console.log(obqvi);
+            $('.obiavi').html('');
             pokajiObqvi(obqvi, 'searchObqvi');
             var searchObqvi = document.getElementById('searchObqvi');
             Array.from(main).forEach(div => div.style.display = 'none');
@@ -358,4 +370,12 @@ $(function() {
     document.getElementById('place').onchange = function() {
         localStorage.setItem('place', JSON.stringify(document.getElementById('place').value));
     };
+
+    $('.btn-staj').on('click', function() {
+        var stajove = vsichkiObqvi.filter(obqva => obqva.type == 'Стаж');
+        $('.obiavi').html('');
+        pokajiObqvi(stajove, 'stajove');
+        Array.from(main).forEach(div => div.style.display = 'none');
+        $('#stajove').css('display', 'block')
+    })
 });

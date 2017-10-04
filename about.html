@@ -67,7 +67,7 @@
                             <li><a href="#">Целодневни</a></li>
                             <li><a href="#">Половин работен ден</a></li>
                             <li><a href="#">Неплатени</a></li>
-                            <li><a href="#">Всички стажове</a></li>
+                            <li><a class="btn-staj" href="#">Всички стажове</a></li>
                         </ul>
                     </li>
                     <li><a class="buttonFirmi" href="#">Фирми</a></li>
@@ -206,7 +206,7 @@
                     <h4><strong><em>Намери стажа, който ще те направи най-добрия професионалист</em></strong></h4>
                     <p>Всеки работодател, посетил сайта, има възможност да публикува обява за стаж. За целта обаче той трябва да има регистрация. Студентите и младите хора, които си търсят стаж, могат да разгледат обявите ни и да изпратят своето CV. Ако
                         искате наистина да бъдете добри в сферата, в която работите, стажувайте в един от най-добрите фирми, които може да намерите в сайта ни!</p><br>
-                    <a href='#' class='button' id='button-CV'>Виж всички стажове:</a>
+                    <a href='#' class='button btn-staj' id='button-CV'>Виж всички стажове:</a>
                 </div>
                 <div>
                     <img id='cv' src='assets\images\CV_pic1.png' alt='CV' width="180px" height="auto" />
@@ -413,26 +413,32 @@
 
         <!-- Фирми -->
 
-        <div id="firmi" class="main container">
+        <div id="firmi" class="main container ">
 
         </div>
 
         <!-- Vsichki obyavi -->
 
-        <div id="obyavi" class="main container row">
+        <div id="obyavi" class="main container row obiavi">
 
         </div>
 
         <!-- Търсени обяви -->
-        <div id="searchObqvi" class="main container row">
+        <div id="searchObqvi" class="main container row obiavi">
 
             <!-- <a id="buttonForSearch" href="#">Промени търсенето </a> -->
         </div>
-        <div id="currentObyavi" class="main container row">
+        <div id="currentObyavi" class="main container row obiavi">
 
         </div>
         <!-- Новини -->
-        <div id="news" class="main container row">
+        <div id="news" class="main container text-center row">
+            <img class="fa-spin" src="assets/images/load.png">
+        </div>
+
+        <!-- Стажове -->
+
+        <div id="stajove" class="main container row obiavi">
 
         </div>
 
@@ -447,7 +453,7 @@
                     <p id="vuprosi" class="pointer footerP">FAQ</p>
                 </div>
                 <div class="col-sm-2">
-                    <p class="novini" class="pointer footerP">Новини</p>
+                    <p class="pointer footerP novini">Новини</p>
                 </div>
                 <div class="col-sm-2">
                     <p class="pointer buttonFirmi footerP">Фирми</p>

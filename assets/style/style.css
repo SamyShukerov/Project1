@@ -113,16 +113,20 @@ footer {
     color: red;
 }
 
-#table-obyavi {
+.table-obyavi {
     border: 1px solid black;
-    margin: auto;
+    height: 100px;
 }
 
-#logo-obyava {
+.logo-obyava {
     display: block;
     float: right;
     padding-right: 25px;
     padding-bottom: 5px;
+}
+
+.data {
+    padding-left: 25px;
 }
 
 #obyava-name {
@@ -221,7 +225,6 @@ footer {
 
 #pagination {
     padding-top: 20px;
-    padding-left: 33%;
 }
 
 #pagination a {
@@ -270,4 +273,8 @@ div.panel {
 
 .newsInfo:hover {
     text-decoration: none;
+}
+
+.kandidatstvai {
+    margin-top: 15px;
 }
