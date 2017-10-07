@@ -172,15 +172,17 @@ $(function() {
             div.classList.add('pag');
             var html = `<table  class='col-md-12 table-obyavi' data-toggle="tooltip" data-placement="right" title="Вид : ${obyava.type}">
                         <tr>
-                        <td class="data" width='300px' >${obyava.date}<br>
+                        <td class="data" width='39%' >${obyava.date}<br>
                         <img width="80" src="assets/images/stars-${obyava.stars}.png" style="margin-left:-4px" /> <br> Направление : ${obyava.category}
                         </td>
-                        <td class="text-center" ><h3 id='obyava-name'><a role="button" class="obyavaName " data-toggle="collapse" href="#${obyava.id}" aria-expanded="false" aria-controls="${obyava.id}">${obyava.name}</a></h3>
+                        <td><h3 id='obyava-name' ><a role="button" class="obyavaName" data-toggle="collapse" href="#${obyava.id}" aria-expanded="false" aria-controls="${obyava.id}">${obyava.name}</a></h3>
+                        </td>
+                        <td>
                         <img src='${obyava.firma.logo}' class='logo-obyava' alt='logo na Imperia' width='150px' height="auto" />
                         </td>
                         </tr>
                         <tr>
-                        <td colspan='2'>
+                        <td colspan='3'>
                         <div class="collapse" id="${obyava.id}">
                         <div class="well text-center">
                         ${obyava.info}
