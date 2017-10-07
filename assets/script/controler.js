@@ -59,7 +59,8 @@ $(function() {
             var login = document.getElementById('login').parentNode;
             var rr = document.getElementById('register');
             var name = document.createElement('a');
-            name.classList.add('currentUser')
+
+            name.classList.add('currentUser');
 
             name.innerHTML = '<span class="glyphicon glyphicon-user"></span>  <span style="cursor:pointer">' + user + '</span>';
             rr.parentNode.appendChild(name);
@@ -70,8 +71,7 @@ $(function() {
                 pokajiObqvi(userList.currentUser.obyavi, 'currentObyavi');
                 Array.from(main).forEach(div => div.style.display = 'none');
                 document.getElementById('currentObyavi').style.display = 'block';
-
-            })
+            });
         } else {
             document.getElementById('vhodP').textContent = 'Невалиден потребител и/или парола';
             document.getElementById('vhodP').classList.add('text-danger');
@@ -86,7 +86,6 @@ $(function() {
     $('#register').click(function() {
         $('#signUp').modal();
     });
-
 
     a.id = 'buttonForSearch';
     a.textContent = 'Промени търсенето';
@@ -137,25 +136,25 @@ $(function() {
 
         var buttonInfo = document.createElement('button');
 
-        buttonInfo.setAttribute('class', 'buttonInfo');
+        buttonInfo.setAttribute('class', 'button1');
         buttonInfo.setAttribute('content', 'button');
         buttonInfo.innerHTML = 'Още за фирмата';
         buttonInfo.style.float = 'right';
         buttonInfo.style.margin = '5px';
 
-        var buttonObqvi = document.createElement('button');
+        var button = document.createElement('button');
 
-        buttonObqvi.setAttribute('class', 'buttonObqvi');
-        buttonObqvi.setAttribute('content', 'button');
-        buttonObqvi.innerHTML = 'Виж всички обяви';
-        buttonObqvi.style.float = 'right';
-        buttonObqvi.style.margin = '5px';
+        button.setAttribute('class', 'button');
+        button.setAttribute('content', 'button');
+        button.innerHTML = 'Виж всички обяви';
+        button.style.float = 'right';
+        button.style.margin = '5px';
 
         div.appendChild(img);
         div.appendChild(h3);
         firmi.appendChild(div);
         div.appendChild(buttonInfo);
-        div.appendChild(buttonObqvi);
+        div.appendChild(button);
 
         buttonInfo.addEventListener('click', function(event) {
             document.location = firma.contacts.website;
@@ -165,8 +164,10 @@ $(function() {
     // function za pokazvane na obqvi
     function pokajiObqvi(arrObqvi, container) {
         var container = $('#' + container);
+
         arrObqvi.forEach(obyava => {
             var div = document.createElement('div');
+
             div.style.padding = '5px';
             div.classList.add('pag');
             var html = `<table  class='col-md-12 table-obyavi' data-toggle="tooltip" data-placement="right" title="Вид : ${obyava.type}">
@@ -199,30 +200,31 @@ $(function() {
 
             buttonKandidatstvai.addEventListener('click', function(event) {
                 var p = document.getElementById(`info_${obyava.id}`);
+
                 p.innerHTML = '';
                 if (userList.currentUser !== null) {
                     if (userList.currentUser.obyavi === undefined) {
                         userList.currentUser.obyavi = [];
                     }
                     var vecheEDobavena = userList.currentUser.obyavi.some(ob => ob.id === obyava.id);
+
                     if (vecheEDobavena === false) {
                         userList.currentUser.obyavi.push(obyava);
-                        p.setAttribute('class', 'text-success')
-                        p.innerText = 'Вие успешно кандидатствахте !'
-                        buttonKandidatstvai.parentNode.appendChild(p)
+                        p.setAttribute('class', 'text-success');
+                        p.innerText = 'Вие успешно кандидатствахте !';
+                        buttonKandidatstvai.parentNode.appendChild(p);
                     } else {
-                        p.setAttribute('class', 'text-info')
-                        p.innerText = 'Вече сте кандидатствали за тази обява!'
-                        buttonKandidatstvai.parentNode.appendChild(p)
+                        p.setAttribute('class', 'text-info');
+                        p.innerText = 'Вече сте кандидатствали за тази обява!';
+                        buttonKandidatstvai.parentNode.appendChild(p);
                     }
                     console.log(userList.currentUser);
                 } else {
-                    p.setAttribute('class', 'text-warning')
-                    p.innerText = 'Моля, първо влезте в профила си !'
-                    buttonKandidatstvai.parentNode.appendChild(p)
+                    p.setAttribute('class', 'text-warning');
+                    p.innerText = 'Моля, първо влезте в профила си !';
+                    buttonKandidatstvai.parentNode.appendChild(p);
                 }
             });
-
         });
 
         if ($('div.my-page-navigation').length > 0) {
@@ -250,9 +252,9 @@ $(function() {
         $('div.my-page-navigation').attr('id', 'pagination');
         $('div#pagination').css('display', 'block');
     }
-    var buttonObqvi = document.getElementById('buttonObqvi');
+    var button = document.getElementById('buttonObqvi');
 
-    buttonObqvi.addEventListener('click', function() {
+    button.addEventListener('click', function() {
         $('.obiavi').html('');
         pokajiObqvi(vsichkiObqvi, 'obyavi');
         obyavi.insertBefore(a, obyavi.firstChild);
@@ -266,7 +268,7 @@ $(function() {
         };
     });
 
-    var buttonObqvi = Array.from(document.getElementsByClassName('buttonObqvi'));
+    var buttonObqvi = Array.from(document.getElementsByClassName('button'));
 
     buttonObqvi.forEach(button => {
         button.addEventListener('click', function() {
@@ -302,15 +304,15 @@ $(function() {
         var obqvi = vsichkiObqvi.filter(function(obqva) {
             if (obqva.place == place) {
                 if (category.some(function(c) {
-                        if (c.checked && categories[c.value] == obqva.category) {
+                    if (c.checked && categories[c.value] == obqva.category) {
+                        return true;
+                    }
+                })) {
+                    if (type.some(function(t) {
+                        if (t.checked && types[t.value] == obqva.type) {
                             return true;
                         }
                     })) {
-                    if (type.some(function(t) {
-                            if (t.checked && types[t.value] == obqva.type) {
-                                return true;
-                            }
-                        })) {
                         return obqva;
                     }
                 }
@@ -339,15 +341,15 @@ $(function() {
     });
 
     $('#search').on('keypress', function(e) {
-
         if (e.which == 13) {
-
             var searchWord = this.value.trim().toLowerCase();
             var obqvi = vsichkiObqvi.filter(o => o.name.toLowerCase().indexOf(searchWord) != -1);
+
             console.log(obqvi);
             $('.obiavi').html('');
             pokajiObqvi(obqvi, 'searchObqvi');
             var searchObqvi = document.getElementById('searchObqvi');
+
             Array.from(main).forEach(div => div.style.display = 'none');
             searchObqvi.style.display = 'block';
             $('#pagination').css('display', 'block');
@@ -362,7 +364,7 @@ $(function() {
             searchObqvi.insertBefore(a, searchObqvi.firstChild);
             this.value = '';
         }
-    })
+    });
 
     if (localStorage.getItem('place') != null) { document.getElementById('place').value = JSON.parse(localStorage.getItem('place')); } else {
         localStorage.setItem('place', JSON.stringify(document.getElementById('place').value));
@@ -373,9 +375,10 @@ $(function() {
 
     $('.btn-staj').on('click', function() {
         var stajove = vsichkiObqvi.filter(obqva => obqva.type == 'Стаж');
+
         $('.obiavi').html('');
         pokajiObqvi(stajove, 'stajove');
         Array.from(main).forEach(div => div.style.display = 'none');
-        $('#stajove').css('display', 'block')
-    })
+        $('#stajove').css('display', 'block');
+    });
 });
