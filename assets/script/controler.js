@@ -144,8 +144,9 @@ $(function() {
         buttonInfo.style.margin = '5px';
 
         var button = document.createElement('button');
+        button.classList.add('button');
+        button.classList.add('buttonPokaji');
 
-        button.setAttribute('class', 'button');
         button.setAttribute('content', 'button');
         button.innerHTML = 'Виж всички обяви';
         button.style.float = 'right';
@@ -272,7 +273,7 @@ $(function() {
         };
     });
 
-    var buttonObqvi = Array.from(document.getElementsByClassName('button'));
+    var buttonObqvi = Array.from(document.getElementsByClassName('buttonPokaji'));
 
     buttonObqvi.forEach(button => {
         button.addEventListener('click', function() {
