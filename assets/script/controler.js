@@ -69,6 +69,7 @@ $(function() {
             name.addEventListener('click', function() {
                 $('.obiavi').html('');
                 pokajiObqvi(userList.currentUser.obyavi, 'currentObyavi');
+                logo();
                 Array.from(main).forEach(div => div.style.display = 'none');
                 document.getElementById('currentObyavi').style.display = 'block';
             });
@@ -259,6 +260,7 @@ $(function() {
     button.addEventListener('click', function() {
         $('.obiavi').html('');
         pokajiObqvi(vsichkiObqvi, 'obyavi');
+        logo();
         obyavi.insertBefore(a, obyavi.firstChild);
         a.onclick = function() {
             obyavi.insertBefore(tursachka, obyavi.children[1]);
@@ -277,12 +279,15 @@ $(function() {
             var name = button.parentNode.querySelector('h3').textContent;
             var firma = arrayFirmi.find(f => f.name == name);
             var logo = document.createElement('img');
-            var logoDiv = document.createElement('div');
+
+
 
             logo.src = firma.logo;
 
             logo.id = 'logoPriObqviNaFirmata';
-
+            logo.addEventListener('click', function() {
+                document.location = firma.contacts.website;
+            })
             Array.from(main).forEach(div => div.style.display = 'none');
             obyavi.style.display = 'block';
             var info = document.createElement('h4');
@@ -296,6 +301,38 @@ $(function() {
         });
     });
 
+    function logo() {
+        var logoBtn = Array.from(document.getElementsByClassName('logo-obyava'));
+        logoBtn.forEach(button => {
+            button.addEventListener('click', function() {
+                var search = button.getAttribute('src');
+
+                var firma = arrayFirmi.find(f => f.logo == search);
+                var logo = document.createElement('img');
+
+
+                logo.src = firma.logo;
+
+                logo.id = 'logoPriObqviNaFirmata';
+                logo.addEventListener('click', function() {
+                    document.location = firma.contacts.website;
+                })
+                Array.from(main).forEach(div => div.style.display = 'none');
+                obyavi.style.display = 'block';
+                var info = document.createElement('h4');
+
+                info.textContent = firma.info;
+                info.style.clear = 'both';
+                $('.obiavi').html('');
+                pokajiObqvi(firma.obqvi, 'obyavi');
+                obyavi.firstElementChild.insertBefore(info, obyavi.firstElementChild.firstElementChild);
+                obyavi.firstElementChild.insertBefore(logo, obyavi.firstElementChild.firstElementChild);
+            });
+        });
+    }
+
+
+
     // Търсене на обяви
     document.getElementById('buttonTursi').addEventListener('click', function() {
         var place = document.getElementById('place').value;
@@ -306,15 +343,15 @@ $(function() {
         var obqvi = vsichkiObqvi.filter(function(obqva) {
             if (obqva.place == place) {
                 if (category.some(function(c) {
-                    if (c.checked && categories[c.value] == obqva.category) {
-                        return true;
-                    }
-                })) {
-                    if (type.some(function(t) {
-                        if (t.checked && types[t.value] == obqva.type) {
+                        if (c.checked && categories[c.value] == obqva.category) {
                             return true;
                         }
                     })) {
+                    if (type.some(function(t) {
+                            if (t.checked && types[t.value] == obqva.type) {
+                                return true;
+                            }
+                        })) {
                         return obqva;
                     }
                 }
@@ -340,6 +377,7 @@ $(function() {
         };
         searchObqvi.insertBefore(a, searchObqvi.firstChild);
         buttonForSearch = document.getElementById('buttonForSearch');
+        logo();
     });
 
     $('#search').on('keypress', function(e) {
@@ -350,6 +388,7 @@ $(function() {
             console.log(obqvi);
             $('.obiavi').html('');
             pokajiObqvi(obqvi, 'searchObqvi');
+            logo();
             var searchObqvi = document.getElementById('searchObqvi');
 
             Array.from(main).forEach(div => div.style.display = 'none');
@@ -382,5 +421,6 @@ $(function() {
         pokajiObqvi(stajove, 'stajove');
         Array.from(main).forEach(div => div.style.display = 'none');
         $('#stajove').css('display', 'block');
+        logo();
     });
 });

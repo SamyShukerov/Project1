@@ -137,8 +137,6 @@ footer {
     font-weight: bold;
 }
 
-
-
 #osnovno {
     color: red;
     background-color: blue;
@@ -221,13 +219,12 @@ footer {
 }
 
 
-
 /* #button-CV {
         margin-left: 3px;
     }
    */
 
-   .button1 {
+.button1 {
     border: 1px solid #0a3c59;
     background: #095d91;
     background: -webkit-gradient(linear, left top, left bottom, from(#c0def0), to(#095d91));
@@ -323,6 +320,8 @@ div.panel {
 .newsInfo {
     color: #555;
     font-size: 1.1em;
+    box-sizing: border-box;
+    height: 390px;
 }
 
 .newsInfo:hover {
@@ -334,9 +333,9 @@ div.panel {
 }
 
 #tittle {
-    display:inline-block;
-    margin-top:30px;
+    display: inline-block;
+    margin-top: 30px;
     margin-left: 50px;
     font-size: 40px;
-    font-family: 'Cinzel', serif;    
+    font-family: 'Cinzel', serif;
 }
